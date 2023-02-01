@@ -1,0 +1,7 @@
+services:
+  django:
+    expose:
+      - "8000"
+    command: gunicorn core.wsgi
+    environment:
+      - DJANGO_DEBUG=False

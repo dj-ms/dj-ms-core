@@ -6,6 +6,7 @@ services:
     command: gunicorn core.wsgi
     environment:
       - DJANGO_DEBUG=False
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?DJANGO_SECRET_KEY}
     volumes:
       - static:/code/static/
       - media:/code/media/

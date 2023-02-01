@@ -17,7 +17,6 @@ dj-database-url
 
 # Deployment
 gunicorn
-whitenoise
 
 # Cache
 django-redis

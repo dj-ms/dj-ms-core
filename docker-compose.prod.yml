@@ -1,7 +1,27 @@
 services:
   django:
     expose:
-      - "8000"
+      - 8000
+    entrypoint: /code/entrypoint.prod.sh
     command: gunicorn core.wsgi
     environment:
       - DJANGO_DEBUG=False
+    volumes:
+      - static:/code/static/
+      - media:/code/media/
+  nginx:
+    image: nginx:alpine-slim
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - static:/usr/share/nginx/static/
+      - media:/usr/share/nginx/media/
+    ports:
+      - "8000:8000"
+    depends_on:
+      django:
+        condition: service_started
+
+
+volumes:
+  static:
+  media:

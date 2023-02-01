@@ -1,0 +1,13 @@
+# Django
+Django~=4.1
+
+# Databases
+psycopg2-binary
+
+# Deployment
+gunicorn
+whitenoise
+
+# Cache
+
+# Async Celery tasks

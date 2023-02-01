@@ -1,0 +1,7 @@
+**/venv
+**/.idea
+**/.env
+**/__pycache__
+**/node_modules
+**/*.egg-info
+db.sqlite3

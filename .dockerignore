@@ -1,0 +1,11 @@
+.idea
+.git
+venv
+.dockerignore
+.example.env
+.gitignore
+db.sqlite3
+docker-compose.*
+Dockerfile
+runtime.txt
+setup.py

@@ -96,11 +96,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+DATABASE_ROUTERS = [
+    'ms_auth_router.routers.DefaultRouter',
+]
+
+AUTH_DB = 'default'
+
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
 }
-
-AUTH_DB = 'default'
 
 
 REST_FRAMEWORK = {

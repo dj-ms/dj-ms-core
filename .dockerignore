@@ -9,3 +9,6 @@ docker-compose.*
 Dockerfile
 runtime.txt
 setup.py
+.github
+README.md
+LICENSE

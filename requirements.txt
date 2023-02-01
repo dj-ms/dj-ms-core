@@ -1,13 +1,31 @@
+# Python
+python-dotenv
+
 # Django
 Django~=4.1
+djangorestframework
+django-filter
+django-cors-headers
+django-cleanup
+
+# Miscroservices
+dj-ms-auth-router
 
 # Databases
 psycopg2-binary
+dj-database-url
 
 # Deployment
 gunicorn
 whitenoise
 
 # Cache
+django-redis
+redis
 
 # Async Celery tasks
+celery
+django-celery-beat
+
+# Sentry
+#sentry-sdk

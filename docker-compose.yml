@@ -1,8 +1,31 @@
 version: '3'
 
 services:
+  postgres:
+    image: postgres:14.6-bullseye
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
+      interval: 3s
+      timeout: 3s
+      retries: 10
   redis:
     image: redis:alpine
   django:
     build:
       context: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+
+volumes:
+  postgres_data:

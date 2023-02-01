@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 import dj_database_url
-from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-9uq@=l5ykga+r$2=+nk+abwy)ej-y2n%!-u^fe^0=ybj)*+)d!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.getenv('DJANGO_DEBUG') == 'False' else True
@@ -59,7 +58,6 @@ INSTALLED_APPS = [
     'ms_auth_router',
 
     'rest_framework',
-
     'django_cleanup.apps.CleanupConfig'
 ]
 

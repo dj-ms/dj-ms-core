@@ -16,6 +16,7 @@ services:
   redis:
     image: redis:alpine
   django:
+    image: harleyking/dj-ms-core:latest
     build:
       context: .
     depends_on:

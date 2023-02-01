@@ -5,9 +5,9 @@ import multiprocessing
 
 max_requests = 1000
 
-max_requests_jitter = 50
+max_requests_jitter = 100
 
-log_file = "-"
+log_file = '-'
 
 workers = multiprocessing.cpu_count() + 1
 

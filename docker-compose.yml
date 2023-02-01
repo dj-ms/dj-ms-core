@@ -19,6 +19,12 @@ services:
     image: harleyking/dj-ms-core:latest
     build:
       context: .
+    restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 3s
+      timeout: 3s
+      retries: 10
     depends_on:
       postgres:
         condition: service_healthy

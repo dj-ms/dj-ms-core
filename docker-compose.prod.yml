@@ -20,7 +20,7 @@ services:
       - "8000:8000"
     depends_on:
       django:
-        condition: service_started
+        condition: service_healthy
 
 
 volumes:

@@ -13,6 +13,3 @@ services:
   celery-beat:
     volumes:
       - .:/code/
-  flower:
-    ports:
-      - "${CELERY_FLOWER_PORT:-5555}:5555"

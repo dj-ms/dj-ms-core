@@ -77,18 +77,7 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
     env_file:
       - .env
-  flower:
-    image: mher/flower
-    command: celery flower
-    depends_on:
-      django:
-        condition: service_healthy
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    environment:
-      - CELERY_BROKER_URL=redis://redis:6379/2
+
 
 volumes:
   postgres_data:

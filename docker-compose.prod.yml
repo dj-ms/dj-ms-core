@@ -18,9 +18,6 @@ services:
     volumes:
       - static:/code/static/
       - media:/code/media/
-  flower:
-    expose:
-      - 5555
   nginx:
     image: nginx:alpine-slim
     volumes:

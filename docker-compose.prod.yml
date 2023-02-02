@@ -3,7 +3,7 @@ services:
     expose:
       - 8000
     entrypoint: /code/entrypoint.prod.sh
-    command: gunicorn core.wsgi
+    command: gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker
     environment:
       - DJANGO_DEBUG=False
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?DJANGO_SECRET_KEY}

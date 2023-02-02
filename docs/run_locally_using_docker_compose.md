@@ -1,11 +1,11 @@
 Build project once
 ```shell
-$ docker compose build
+docker compose build
 ```
 
 Run project
 ```shell
-$ docker compose up -d
+docker compose up -d
 ```
 
 > Note: When running locally, you don't need to build project everytime after changing code 
@@ -14,15 +14,15 @@ $ docker compose up -d
 
 Enter container
 ```shell
-$ docker compose exec app bash
+docker compose exec app bash
 ```
 
 Create superuser
 ```shell
-$ python manage.py createsuperuser
+python manage.py createsuperuser
 ```
 
 View logs
 ```shell
-$ docker compose logs -f
+docker compose logs -f
 ```

@@ -1,7 +1,4 @@
-import logging
-
-from django.db import connections
-from django.http import HttpResponse, HttpResponseServerError
+from django.http import HttpResponse
 
 
 class HealthCheckMiddleware:

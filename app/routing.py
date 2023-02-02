@@ -1,6 +1,5 @@
-from channels.routing import URLRouter
+from django.urls import path
 
-pledges_router = URLRouter([
+websocket_urlpatterns = [
 
-])
-
+]

@@ -10,6 +10,14 @@ services:
     volumes:
       - static:/code/static/
       - media:/code/media/
+  celery:
+    volumes:
+      - static:/code/static/
+      - media:/code/media/
+  celery-beat:
+    volumes:
+      - static:/code/static/
+      - media:/code/media/
   nginx:
     image: nginx:alpine-slim
     volumes:

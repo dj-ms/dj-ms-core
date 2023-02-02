@@ -55,11 +55,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps
     'corsheaders',
     'rest_framework',
+    'django_celery_beat',
 
+    # microservice apps
     'ms_auth_router',
     'app',
+
     # django_cleanup cleanup files after deleting model instance with FileField or ImageField fields
     'django_cleanup.apps.CleanupConfig'
 ]
@@ -171,3 +175,17 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# -----> REDIS
+REDIS_URL = os.getenv('REDIS_URL', f'redis://localhost:6379')
+
+
+# -----> CELERY
+CELERY_BROKER_URL = f'{REDIS_URL}/2'
+CELERY_RESULT_BACKEND = f'{REDIS_URL}/3'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_DEFAULT_QUEUE = 'default'

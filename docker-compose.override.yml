@@ -4,3 +4,10 @@ services:
       - "${DJANGO_WEB_PORT:-8000}:8000"
     volumes:
       - .:/code/
+  celery:
+    volumes:
+      - .:/code/
+  celery-beat:
+    volumes:
+      - .:/code/
+

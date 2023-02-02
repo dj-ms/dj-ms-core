@@ -15,6 +15,12 @@ services:
       retries: 10
   redis:
     image: redis:alpine
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 3s
+      timeout: 3s
+      retries: 10
   django:
     image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
     build:
@@ -29,12 +35,63 @@ services:
       postgres:
         condition: service_healthy
       redis:
-        condition: service_started
+        condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
       - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
     env_file:
       - .env
+  celery:
+    image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
+    build:
+      context: .
+    restart: always
+    command: celery -A core worker -l info --concurrency 1 -P solo -E
+    depends_on:
+      django:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+    env_file:
+      - .env
+  celery-beat:
+    image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
+    build:
+      context: .
+    restart: always
+    command: celery -A core beat -l info --scheduler django_celery_beat.schedulers.DatabaseScheduler
+    depends_on:
+      django:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+    env_file:
+      - .env
+  flower:
+    image: mher/flower
+    command: celery flower
+    depends_on:
+      django:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/2
+      - CELERY_RESULT_BACKEND=redis://redis:6379/3
+    ports:
+      - "${CELERY_FLOWER_PORT:-5555}:5555"
 
 volumes:
   postgres_data:

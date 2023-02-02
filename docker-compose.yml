@@ -3,6 +3,7 @@ version: '3'
 services:
   postgres:
     image: postgres:14.6-bullseye
+    restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -25,7 +26,6 @@ services:
     image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
-    restart: always
     healthcheck:
       test: curl -f http://localhost:8000/health || exit 1
       interval: 3s
@@ -45,7 +45,6 @@ services:
     image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
-    restart: always
     command: celery -A core worker -l info --concurrency 1 -P solo -E
     depends_on:
       django:
@@ -63,7 +62,6 @@ services:
     image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
-    restart: always
     command: celery -A core beat -l info --scheduler django_celery_beat.schedulers.DatabaseScheduler
     depends_on:
       django:
@@ -81,3 +79,4 @@ services:
 
 volumes:
   postgres_data:
+  pgadmin_data:

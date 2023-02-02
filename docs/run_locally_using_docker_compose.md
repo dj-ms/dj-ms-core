@@ -5,12 +5,13 @@ docker compose build
 
 Run project
 ```shell
+
 docker compose up -d
 ```
 
-> Note: When running locally, you don't need to build project everytime after changing code 
+> Note: when running locally, you don't need to build project everytime after changing code 
 > while you're not changing `requirements.txt`. 
-> It's because local code is mounted to container so your changes are reflected immediately.
+> It's because local code is mounted into container so your changes are reflected immediately.
 
 Enter container
 ```shell

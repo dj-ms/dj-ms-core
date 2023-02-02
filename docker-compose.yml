@@ -89,9 +89,6 @@ services:
         condition: service_healthy
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/2
-      - CELERY_RESULT_BACKEND=redis://redis:6379/3
-    ports:
-      - "${CELERY_FLOWER_PORT:-5555}:5555"
 
 volumes:
   postgres_data:

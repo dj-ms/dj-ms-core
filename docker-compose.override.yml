@@ -1,4 +1,7 @@
 services:
+  postgres:
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
   django:
     ports:
       - "${DJANGO_WEB_PORT:-8000}:8000"
@@ -10,4 +13,6 @@ services:
   celery-beat:
     volumes:
       - .:/code/
-
+  flower:
+    ports:
+      - "${CELERY_FLOWER_PORT:-5555}:5555"

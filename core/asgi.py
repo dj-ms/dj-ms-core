@@ -15,7 +15,6 @@ from django.core.asgi import get_asgi_application
 
 from core import routing
 
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
 application = ProtocolTypeRouter({
@@ -25,7 +24,7 @@ application = ProtocolTypeRouter({
     # WebSockets handler
     "websocket": AuthMiddlewareStack(
         URLRouter(
-            routing.root_router.urlpatterns
+            routing.websocket_urlpatterns
         )
     ),
 })

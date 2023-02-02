@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='dj-ms-core',
-    version='0.0.1',
+    version='0.0.4',
     packages=find_packages(),
     scripts=['manage.py', ]
 )

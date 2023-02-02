@@ -54,10 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'rest_framework',
 
     'ms_auth_router',
-
-    'rest_framework',
+    'app',
+    # django_cleanup cleanup files after deleting model instance with FileField or ImageField fields
     'django_cleanup.apps.CleanupConfig'
 ]
 

@@ -16,7 +16,7 @@ services:
   redis:
     image: redis:alpine
   django:
-    image: harleyking/dj-ms-core:${IMAGE_TAG:-latest}
+    image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
     restart: always

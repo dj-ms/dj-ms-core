@@ -17,21 +17,17 @@ That helps to develop more flexible and scalable projects.
 
 
 ## Features
-- [x] Docker
-- [x] Docker compose
-- [x] Docker compose for local development
-- [x] Docker compose for production
 - [x] Django
 - [x] Django REST framework
-- [x] Celery
-- [x] Celery beat
+- [x] Websockets with Django channels
+- [x] Docker
+- [x] Docker compose for development & production
+- [x] Celery & Celery beat
 - [x] Redis
-- [x] PostgreSQL
-- [x] PGAdmin
+- [x] PostgreSQL & PGAdmin
 - [x] Nginx
 - [x] Gunicorn
 - [x] Custom db router for auth models
-- [x] Websockets with Django channels
 - [ ] Expiring token authentication
 - [ ] Custom user model
 - [ ] Message brokers integration

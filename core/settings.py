@@ -191,3 +191,16 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_DEFAULT_QUEUE = 'default'
+
+
+# -----> WEBSOCKETS
+ASGI_APPLICATION = 'core.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.pubsub.RedisPubSubChannelLayer',
+        'CONFIG': {
+            "hosts": [REDIS_URL],
+            "symmetric_encryption_keys": [SECRET_KEY],
+        },
+    },
+}

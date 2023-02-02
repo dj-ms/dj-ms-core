@@ -31,6 +31,7 @@ That helps to develop more flexible and scalable projects.
 - [x] Nginx
 - [x] Gunicorn
 - [x] Custom db router for auth models
+- [x] Websockets with Django channels
 
 
 ### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)

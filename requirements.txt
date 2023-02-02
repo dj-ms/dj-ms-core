@@ -22,6 +22,11 @@ gunicorn
 django-redis
 redis
 
+# Websocket support
+channels[daphne]
+channels-redis
+uvicorn[standard]
+
 # Async Celery tasks
 celery
 django-celery-beat

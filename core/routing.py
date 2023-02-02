@@ -1,7 +1,7 @@
 from channels.routing import URLRouter
 from django.urls import re_path
 
-from app.routing import websocket_urlpatterns as app_websocket_urlpatterns
+from app.ws.routing import websocket_urlpatterns as app_websocket_urlpatterns
 
 
 websocket_urlpatterns = [

@@ -1,6 +1,8 @@
 .idea
 .git
 venv
+static
+media
 .dockerignore
 .example.env
 .gitignore
@@ -8,7 +10,6 @@ db.sqlite3
 docker-compose.*
 Dockerfile
 runtime.txt
-setup.py
 .github
 README.md
 LICENSE

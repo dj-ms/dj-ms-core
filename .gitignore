@@ -5,3 +5,5 @@
 **/node_modules
 **/*.egg-info
 db.sqlite3
+static
+media

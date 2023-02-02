@@ -17,7 +17,7 @@ services:
       - static:/usr/share/nginx/static/
       - media:/usr/share/nginx/media/
     ports:
-      - "${WEB_PORT:-8000}:8000"
+      - "${DJANGO_WEB_PORT:-8000}:8000"
     depends_on:
       django:
         condition: service_healthy

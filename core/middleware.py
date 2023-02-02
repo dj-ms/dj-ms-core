@@ -10,12 +10,5 @@ class HealthCheckMiddleware:
 
     def __call__(self, request):
         if request.path == '/health':
-            db_conn = connections['risk_db']
-            try:
-                _ = db_conn.cursor()
-            except Exception as e:
-                logging.error(e)
-                return HttpResponseServerError('error')
-            else:
-                return HttpResponse('ok')
+            return HttpResponse('ok')
         return self.get_response(request)

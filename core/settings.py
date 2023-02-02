@@ -27,6 +27,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-9uq@=l5ykga+r$2=+nk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.getenv('DJANGO_DEBUG') == 'False' else True
 
+URL_PREFIX = os.getenv('DJANGO_URL_PREFIX', '')
+
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost'

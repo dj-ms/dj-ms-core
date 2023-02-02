@@ -1,6 +1,6 @@
 services:
   django:
     ports:
-      - "${WEB_PORT:-8000}:8000"
+      - "${DJANGO_WEB_PORT:-8000}:8000"
     volumes:
       - .:/code/

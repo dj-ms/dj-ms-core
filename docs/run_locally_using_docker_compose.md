@@ -15,7 +15,7 @@ docker compose up -d
 
 Enter container
 ```shell
-docker compose exec app bash
+docker compose exec django bash
 ```
 
 Create superuser

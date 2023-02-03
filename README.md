@@ -18,7 +18,7 @@ That helps to develop more flexible and scalable projects.
 
 ## How it works
 <p align="center">
-  <img src="docs/media/scheme.png" alt="How it works" align="center" width="600px">
+  <img src="docs/media/scheme.png" alt="How it works" align="center" width="400px">
 </p>
 
 

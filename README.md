@@ -28,6 +28,7 @@ That helps to develop more flexible and scalable projects.
 - [x] Nginx
 - [x] Gunicorn
 - [x] Custom db router for auth models
+- [x] Deployment to VPS
 - [ ] Expiring token authentication
 - [ ] Custom user model
 - [ ] Message brokers integration
@@ -35,6 +36,13 @@ That helps to develop more flexible and scalable projects.
 - [ ] Automated CI/CD
 - [ ] Automated tests
 - [ ] Full documentation
+- [ ] Email confirmation
+- [ ] Social authentication
+- [ ] Active directory authentication
+- [ ] Cloud storage integration
+- [ ] Deployment to Saas / PaaS / IaaS providers
+- [ ] Centralized logging
+- [ ] Automatic discovery of microservices
 
 
 ### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)

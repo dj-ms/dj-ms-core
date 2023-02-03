@@ -32,4 +32,4 @@ celery
 django-celery-beat
 
 # Sentry
-#sentry-sdk
+sentry-sdk

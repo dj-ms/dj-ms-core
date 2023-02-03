@@ -1,4 +1,5 @@
 import datetime
+import logging
 
 from django.contrib.auth import authenticate, password_validation
 from django.core.exceptions import ValidationError
@@ -66,7 +67,8 @@ def register(request):
     try:
         password_validation.validate_password(password1)
     except ValidationError as error:
-        return HttpResponse(error, status=status.HTTP_400_BAD_REQUEST)
+        logging.error(error)
+        return HttpResponse(status=status.HTTP_403_FORBIDDEN)
     if email:
         email_exists = User.objects.filter(email=email).exists()
         if email_exists:

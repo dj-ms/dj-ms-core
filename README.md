@@ -46,8 +46,8 @@
 - [x] Deployment to VPS
 - [x] Serving static and media files with Nginx
 - [x] Sentry integration
-- [ ] Expiring token authentication
-- [ ] Custom user model
+- [x] Expiring token authentication
+- [x] Custom user model
 - [ ] Message brokers integration
 - [ ] Kubernetes integration
 - [ ] Automated CI/CD

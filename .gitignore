@@ -6,4 +6,4 @@
 **/*.egg-info
 db.sqlite3
 static
-media
+/media/

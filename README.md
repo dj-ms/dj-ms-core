@@ -16,6 +16,12 @@ No more hundreds of apps in one project. Split every app into separate project.
 That helps to develop more flexible and scalable projects.
 
 
+## How it works
+<p align="center">
+  <img src="docs/media/scheme.png" alt="How it works" align="center" width="600px">
+</p>
+
+
 ## Features
 - [x] Django
 - [x] Django REST framework

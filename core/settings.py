@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
 
     # microservice apps
+    'authentication',
     'ms_auth_router',
     'app',
 
@@ -124,10 +125,18 @@ DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
 }
 
+REST_AUTH_TOKEN_MODEL = 'authentication.Token'
+
+REST_AUTH_TOKEN_TTL = 60 * 60 * 24
+
+REST_AUTH_TOKEN_CREATOR = 'authentication.utils.create_token'
+
+AUTH_USER_MODEL = 'authentication.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
+        'authentication.utils.ExpiringTokenAuthentication'
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'rest_framework.filters.SearchFilter',

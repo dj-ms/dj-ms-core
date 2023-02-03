@@ -2,22 +2,22 @@ services:
   django:
     expose:
       - 8000
-    entrypoint: /code/entrypoint.prod.sh
+    entrypoint: /home/django/entrypoint.prod.sh
     command: gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker
     environment:
       - DJANGO_DEBUG=False
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?DJANGO_SECRET_KEY}
     volumes:
-      - static:/code/static/
-      - media:/code/media/
+      - static:/home/django/static/
+      - media:/home/django/media/
   celery:
     volumes:
-      - static:/code/static/
-      - media:/code/media/
+      - static:/home/django/static/
+      - media:/home/django/media/
   celery-beat:
     volumes:
-      - static:/code/static/
-      - media:/code/media/
+      - static:/home/django/static/
+      - media:/home/django/media/
   nginx:
     image: nginx:alpine-slim
     volumes:

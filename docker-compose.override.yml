@@ -18,10 +18,10 @@ services:
     ports:
       - "${DJANGO_WEB_PORT:-8000}:8000"
     volumes:
-      - .:/code/
+      - .:/home/django/
   celery:
     volumes:
-      - .:/code/
+      - .:/home/django/
   celery-beat:
     volumes:
-      - .:/code/
+      - .:/home/django/

@@ -4,6 +4,8 @@ services:
   postgres:
     image: postgres:14.6-bullseye
     restart: always
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

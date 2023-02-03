@@ -125,9 +125,13 @@ DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
 }
 
+if auth_db := os.getenv('AUTH_DB_URL'):
+    AUTH_DB = 'auth_db'
+    DATABASES['auth_db'] = dj_database_url.parse(auth_db)
+
 REST_AUTH_TOKEN_MODEL = 'authentication.Token'
 
-REST_AUTH_TOKEN_TTL = 60 * 60 * 24
+REST_AUTH_TOKEN_TTL = os.getenv('DJANGO_REST_AUTH_TOKEN_TTL', 60 * 60 * 24)
 
 REST_AUTH_TOKEN_CREATOR = 'authentication.utils.create_token'
 

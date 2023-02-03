@@ -35,10 +35,7 @@ FROM base AS runtime
 COPY --from=python-deps /.venv /.venv
 ENV PATH="/.venv/bin:$PATH"
 
-# Create and switch to a new user
-RUN useradd --create-home django
 WORKDIR /home/django
-USER django
 
 # Install application into container
 COPY . .

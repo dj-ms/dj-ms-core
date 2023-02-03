@@ -40,3 +40,5 @@ That helps to develop more flexible and scalable projects.
 ### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)
 
 ### [Run in production using docker compose](docs/run_in_production_using_docker_compose.md)
+
+### [Deploy to server](docs/deploy_to_server.md)

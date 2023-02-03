@@ -7,7 +7,6 @@
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/dj-ms/dj-ms-core?style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/dj-ms/dj-ms-core?style=for-the-badge)
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/harleyking/dj-ms-core?style=for-the-badge)
-![GitHub all releases](https://img.shields.io/github/downloads/dj-ms/dj-ms-core/total?style=for-the-badge)
 
 ---
 

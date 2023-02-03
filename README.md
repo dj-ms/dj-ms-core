@@ -2,6 +2,7 @@
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/dj-ms/dj-ms-core?display_name=release&style=for-the-badge)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/dj-ms/dj-ms-core?style=for-the-badge)
+
 ![GitHub issues](https://img.shields.io/github/issues/dj-ms/dj-ms-core?style=for-the-badge)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/dj-ms/dj-ms-core?style=for-the-badge)
 
@@ -9,7 +10,6 @@
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/harleyking/dj-ms-core?style=for-the-badge)
 ![GitHub all releases](https://img.shields.io/github/downloads/dj-ms/dj-ms-core/total?style=for-the-badge)
 
-![GitHub](https://img.shields.io/github/license/dj-ms/dj-ms-core?style=for-the-badge)
 
 ### This project helps to develop microservices with Django Framework. No more hundreds of apps in one project. Split every app into separate project. That helps to develop more flexible and scalable projects.
 

@@ -35,6 +35,7 @@ That helps to develop more flexible and scalable projects.
 - [x] Gunicorn
 - [x] Custom db router for auth models
 - [x] Deployment to VPS
+- [x] Serving static and media files with Nginx
 - [ ] Expiring token authentication
 - [ ] Custom user model
 - [ ] Message brokers integration

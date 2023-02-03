@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import logging
+
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path, include
@@ -25,6 +27,15 @@ urlpatterns = [
     path(URL_PREFIX, include('app.urls')),
 ]
 
+
+def get_redirect_url():
+    try:
+        return redirect(f'{URL_PREFIX}')
+    except Exception as e:
+        logging.error(e)
+        return redirect(f'{URL_PREFIX}/admin')
+
+
 urlpatterns += [
-    path('', lambda req: redirect(f'/{URL_PREFIX}')),
+    path('', lambda req: get_redirect_url()),
 ]

@@ -1,8 +1,17 @@
 # Django microservice core
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/dj-ms/dj-ms-core?display_name=release&style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/dj-ms/dj-ms-core?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/dj-ms/dj-ms-core?style=for-the-badge)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/dj-ms/dj-ms-core?style=for-the-badge)
 
-> ## Still in development.
-> ### Not ready for production.
-> #### Will be ready for production with version 1.0.0
+![GitHub repo size](https://img.shields.io/github/repo-size/dj-ms/dj-ms-core?style=for-the-badge)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/harleyking/dj-ms-core?style=for-the-badge)
+![GitHub all releases](https://img.shields.io/github/downloads/dj-ms/dj-ms-core/total?style=for-the-badge)
+
+![License](https://img.shields.io/github/license/dj-ms/dj-ms-core?style=for-the-badge)
+
+
+### This project helps to develop microservices with Django Framework. No more hundreds of apps in one project. Split every app into separate project. That helps to develop more flexible and scalable projects.
 
 
 > First of all this is simple Django project with some customizations.
@@ -10,10 +19,8 @@ If you are newbie in Django, you can use this project as a template for your own
 I'm not very cool in programming, but I have some experience in Python and Django and want to share it with you.
 
 
-## Purpose
-This project helps to develop microservices in Django.
-No more hundreds of apps in one project. Split every app into separate project.
-That helps to develop more flexible and scalable projects.
+> ### Not ready for production.
+> #### Will be ready with version 1.0.0
 
 
 ## How it works

@@ -42,7 +42,9 @@ That helps to develop more flexible and scalable projects.
 - [ ] Cloud storage integration
 - [ ] Deployment to Saas / PaaS / IaaS providers
 - [ ] Centralized logging
+- [ ] Centralized monitoring
 - [ ] Automatic discovery of microservices
+- [ ] Centralized admin panel
 
 
 ### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)

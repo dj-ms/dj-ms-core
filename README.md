@@ -55,6 +55,10 @@ That helps to develop more flexible and scalable projects.
 - [ ] Centralized admin panel
 
 
+## Requirements
+- [Docker with docker compose](https://docs.docker.com/compose/install/)
+
+
 ### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)
 
 ### [Deploy to server using docker compose](docs/deploy_to_server_using_docker_compose.md)

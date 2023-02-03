@@ -25,7 +25,7 @@
 
 ## How it works
 <p align="center">
-  <img src="docs/media/scheme.png" alt="How it works" align="center" width="400px">
+  <img src="docs/media/scheme.png" alt="How it works" align="center" width="600px">
 </p>
 
 ---

@@ -2,7 +2,7 @@
 
 
 I assume, you have docker with compose plugin installed on your server.
-Please, refer to the (official documentation)[https://docs.docker.com/engine/install/] to install it.
+Please, refer to the [official documentation](https://docs.docker.com/engine/install/) to install it.
 
 Clone the repository to your server:
 ```shell
@@ -95,7 +95,7 @@ If you see the Django admin page, then everything is fine.
 
 ## Configure HTTPS
 
-First, get some domain name from any service, for example, from (namecheap)[https://www.namecheap.com] or (freenom)[https://www.freenom.com].
+First, get some domain name from any service, for example, from [namecheap](https://www.namecheap.com) or [freenom](https://www.freenom.com).
 Create A-record for your domain name and point it to your server IP address.
 
 Check, that your domain name is accessible from the internet:

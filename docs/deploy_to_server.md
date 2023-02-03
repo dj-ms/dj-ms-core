@@ -2,7 +2,7 @@
 
 
 I assume, you have docker with compose plugin installed on your server.
-Please, refer to the (official documentation)[https://docs.docker.com/engine/install/ to install it.
+Please, refer to the (official documentation)[https://docs.docker.com/engine/install/] to install it.
 
 Clone the repository to your server:
 ```shell

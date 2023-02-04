@@ -1,6 +1,8 @@
 # Deploy to server
 
 
+---
+## Prerequisites
 I assume, you have docker with compose plugin installed on your server.
 Please, refer to the [official documentation](https://docs.docker.com/engine/install/) to install it.
 
@@ -24,6 +26,9 @@ Edit the `.env` file and set the environment variables.
 nano .env
 ```
 
+
+---
+## Run project
 Build the docker image:
 ```shell
 docker compose build

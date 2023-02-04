@@ -1,8 +1,21 @@
-## Run locally using docker compose
+# Run locally using docker compose
 
 
-Set environment variables as explained in `.example.env` file.
+---
+## Prerequisites
+Copy the `.example.env` file to `.env`:
+```shell
+cp .example.env .env
+```
 
+Edit the `.env` file and set the environment variables.
+```shell
+nano .env
+```
+
+
+---
+## Run project
 > Note: when running locally, you don't need to build project while unless you change `requirements.txt`. 
 > It's because local code is mounted into container so your changes are reflected immediately.
 
@@ -26,11 +39,6 @@ Create superuser
 python manage.py createsuperuser
 ```
 
-Now you can access admin panel at `http://localhost:8000/admin/`.
-
-If you have set `DJANGO_URL_PREFIX` in `.env` file, 
-then you should access admin panel at `http://localhost:8000/<DJANGO_URL_PREFIX>/admin/`.
-
 View logs
 ```shell
 docker compose logs -f
@@ -43,6 +51,16 @@ Stop project
 docker compose down
 ```
 
+
+---
+## Access project
+Now you can access admin panel at `http://localhost:8000/admin/`.
+
+If you have set `DJANGO_URL_PREFIX` in `.env` file, 
+then you should access admin panel at `http://localhost:8000/<DJANGO_URL_PREFIX>/admin/`.
+
+
+---
 ## PGAdmin
 
 On local environment, you can use PGAdmin to access database.

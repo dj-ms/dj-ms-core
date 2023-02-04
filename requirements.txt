@@ -9,7 +9,7 @@ django-cors-headers
 django-cleanup
 
 # Miscroservices
-dj-ms-auth-router==1.0.0
+dj-ms-auth-router==1.1.0
 
 # Databases
 psycopg2-binary

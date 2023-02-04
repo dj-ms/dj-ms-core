@@ -131,6 +131,7 @@ if auth_db := os.getenv('AUTH_DB_URL'):
 
 AUTH_USER_MODEL = 'authentication.User'
 
+# -----> Rest Framework
 REST_AUTH_TOKEN_MODEL = 'authentication.Token'
 
 REST_AUTH_TOKEN_TTL = os.getenv('DJANGO_REST_AUTH_TOKEN_TTL', 60 * 60 * 24)

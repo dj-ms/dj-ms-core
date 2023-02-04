@@ -3,7 +3,7 @@
 
 Set environment variables as explained in `.example.env` file.
 
-> Note: when running locally, you don't need to build project while you're not changing `requirements.txt`. 
+> Note: when running locally, you don't need to build project while unless you change `requirements.txt`. 
 > It's because local code is mounted into container so your changes are reflected immediately.
 
 Build project

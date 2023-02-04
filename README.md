@@ -33,19 +33,18 @@
 ---
 
 
-## Features
+## What's inside
+- [x] Unified authentication in all microservices
+- [x] Docker compose both for local development and production
+- [x] Kubernetes deployment
 - [x] Expiring token authentication
 - [x] Custom user model
 - [x] Custom db router for auth models
 - [x] Static and media files served by Nginx
-- [ ] Message brokers integration
-- [ ] Kubernetes integration
-- [ ] Full documentation
-- [ ] Email confirmation
+- [x] Websocket support
+- [ ] Automated CI/CD
 - [ ] Active directory authentication
-- [ ] Cloud storage integration
-- [ ] Centralized logging
-- [ ] Centralized monitoring
+- [ ] Message brokers integration
 - [ ] Automatic discovery of microservices
 
 ---

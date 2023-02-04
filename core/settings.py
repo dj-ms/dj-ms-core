@@ -241,6 +241,7 @@ CHANNEL_LAYERS = {
 if SENTRY_DSN := os.getenv('SENTRY_DSN', None):
 
     SENTRY_ENVIRONMENT = os.getenv('SENTRY_ENVIRONMENT', 'development')
+    environment = f'{APP_LABEL}-{SENTRY_ENVIRONMENT}' if APP_LABEL else SENTRY_ENVIRONMENT
 
     import sentry_sdk
     from sentry_sdk.integrations.celery import CeleryIntegration
@@ -263,5 +264,5 @@ if SENTRY_DSN := os.getenv('SENTRY_DSN', None):
         # django.contrib.auth) you may enable sending PII data.
         send_default_pii=True,
 
-        environment=SENTRY_ENVIRONMENT
+        environment=environment
     )

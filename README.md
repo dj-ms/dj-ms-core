@@ -63,6 +63,8 @@
 
 ### [Deploy to server using docker compose](docs/deploy_to_server_using_docker_compose.md)
 
+### [Deploy to production using Kubernetes](docs/deploy_in_production_using_k8s.md)
+
 ---
 
 

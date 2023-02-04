@@ -19,22 +19,23 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path, include
 
-from core.settings import URL_PREFIX
+from core.settings import APP_LABEL
+
 
 urlpatterns = [
-    path(URL_PREFIX + 'admin/', admin.site.urls),
-    path(URL_PREFIX + 'api/', include('app.api.urls'), name='api'),
-    path(URL_PREFIX, include('app.urls')),
-    path(URL_PREFIX + 'api/auth/', include('authentication.api.urls'), name='authentication'),
+    path(APP_LABEL + '/admin/', admin.site.urls),
+    path(APP_LABEL + '/api/', include('app.api.urls'), name='api'),
+    path(APP_LABEL, include('app.urls')),
+    path(APP_LABEL + '/api/auth/', include('authentication.api.urls'), name='authentication'),
 ]
 
 
 def get_redirect_url():
     try:
-        return redirect(f'{URL_PREFIX}')
+        return redirect(f'{APP_LABEL}')
     except Exception as e:
         logging.error(e)
-        return redirect(f'{URL_PREFIX}/admin')
+        return redirect(f'{APP_LABEL}/admin')
 
 
 urlpatterns += [

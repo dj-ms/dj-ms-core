@@ -25,7 +25,7 @@ services:
       timeout: 3s
       retries: 10
   django:
-    image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
+    image: harleyking/dj-ms-${DJ_MS_APP_LABEL:-core}:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
     healthcheck:
@@ -44,7 +44,7 @@ services:
     env_file:
       - .env
   celery:
-    image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
+    image: harleyking/dj-ms-${DJ_MS_APP_LABEL:-core}:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
     command: celery -A core worker -l info --concurrency 1 -P solo -E
@@ -61,7 +61,7 @@ services:
     env_file:
       - .env
   celery-beat:
-    image: harleyking/dj-ms-core:${DJ_MS_CORE_VERSION:-latest}
+    image: harleyking/dj-ms-${DJ_MS_APP_LABEL:-core}:${DJ_MS_CORE_VERSION:-latest}
     build:
       context: .
     command: celery -A core beat -l info --scheduler django_celery_beat.schedulers.DatabaseScheduler

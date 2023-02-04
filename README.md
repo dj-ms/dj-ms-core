@@ -40,6 +40,7 @@ But all of them will be under one domain and will have unified authentication.
 ## What's inside
 - [x] Unified authentication in all microservices
 - [x] Docker compose both for local development and production
+- [x] Celery, Celery Beat, Redis, Postgres, Nginx and PGAdmin included in docker compose
 - [x] Kubernetes deployment
 - [x] Expiring token authentication
 - [x] Custom user model

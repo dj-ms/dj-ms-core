@@ -21,21 +21,23 @@ from django.urls import path, include
 
 from core.settings import APP_LABEL
 
+URL_PREFIX = APP_LABEL + '/' if APP_LABEL else ''
+
 
 urlpatterns = [
-    path(APP_LABEL + '/admin/', admin.site.urls),
-    path(APP_LABEL + '/api/', include('app.api.urls'), name='api'),
-    path(APP_LABEL, include('app.urls')),
-    path(APP_LABEL + '/api/auth/', include('authentication.api.urls'), name='authentication'),
+    path(URL_PREFIX + 'admin/', admin.site.urls),
+    path(URL_PREFIX + 'api/', include('app.api.urls'), name='api'),
+    path(URL_PREFIX, include('app.urls')),
+    path(URL_PREFIX + 'api/auth/', include('authentication.api.urls'), name='authentication'),
 ]
 
 
 def get_redirect_url():
     try:
-        return redirect(f'{APP_LABEL}')
+        return redirect(f'{URL_PREFIX}')
     except Exception as e:
         logging.error(e)
-        return redirect(f'{APP_LABEL}/admin')
+        return redirect(f'{URL_PREFIX}/admin')
 
 
 urlpatterns += [

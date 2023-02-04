@@ -52,15 +52,16 @@ But all of them will be under one domain and will have unified authentication.
 - [ ] Message brokers integration
 - [ ] Automatic discovery of microservices
 
+
 ---
-
-
 ## Requirements
-- [Docker with docker compose](https://docs.docker.com/compose/install/)
+- Docker and compose - [Download](https://docs.docker.com/get-docker/)
+> Of course, you can just run project without docker right on your machine. But docker is recommended way.
+- Python 3.10 - [Download](https://www.python.org/downloads/)
+> You will need Python only if you want to run this project locally without docker.
+
 
 ---
-
-
 ## Installation
 
 ### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)
@@ -69,9 +70,8 @@ But all of them will be under one domain and will have unified authentication.
 
 ### [Deploy to production using Kubernetes](docs/deploy_in_production_using_k8s.md)
 
+
 ---
-
-
 ## Examples
 You can find example microservice app under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.
 Also, there is an example microservice app: [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app).

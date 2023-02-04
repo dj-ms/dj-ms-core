@@ -65,3 +65,8 @@
 
 ---
 
+
+## Examples
+You can find example microservice app under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.
+Also, there is an example microservice app: [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app).
+

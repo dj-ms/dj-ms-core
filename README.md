@@ -10,6 +10,7 @@
 
 
 ---
+## Purpose
 <h3>
 This project helps to develop microservices with Django Framework.
 
@@ -76,3 +77,9 @@ But all of them will be under one domain and will have unified authentication.
 You can find example microservice app under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.
 Also, there is an example microservice app: [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app).
 
+
+---
+## Contributing
+I will be very happy if you will contribute to this project. You can help with code, documentation, ideas, etc.
+Just create an issue or pull request. I will be glad to discuss it with you.
+Also, you can contact me via email: astafeev0308@gmail.com.

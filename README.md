@@ -48,7 +48,7 @@ But all of them will be under one domain and will have unified authentication.
 - [x] Custom db router for auth models
 - [x] Static and media files served by Nginx
 - [x] Websocket support
-- [x] Message brokers integration
+- [ ] Message brokers integration (There is RabbitMQ in docker compose. But at this time it's only used by Celery)
 - [ ] Automated CI/CD
 - [ ] Active directory authentication
 - [ ] Automatic discovery of microservices

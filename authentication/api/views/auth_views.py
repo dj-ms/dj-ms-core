@@ -1,10 +1,11 @@
 import datetime
 import logging
 
-from django.contrib.auth import authenticate, password_validation
+from django.contrib.auth import authenticate, password_validation, login, logout
 from django.core.exceptions import ValidationError
 from django.http import HttpResponse
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
@@ -17,9 +18,10 @@ from django.conf import settings
 TOKEN_TTL = settings.REST_AUTH_TOKEN_TTL
 
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def login(request):
+def login_view(request):
     username = request.data.get('username')
     password = request.data.get('password')
     if None in (username, password):
@@ -33,6 +35,7 @@ def login(request):
     now = timezone.now()
     diff = now - datetime.timedelta(seconds=TOKEN_TTL)
     token, created = Token.objects.get_or_create(user_id=user.pk, last_use__gt=diff, active=True)
+    login(request, user)
     return Response({'token': token.key,
                      'user': {
                         'id': user.pk,
@@ -43,18 +46,21 @@ def login(request):
                      }})
 
 
+@csrf_exempt
 @api_view(['POST'])
-def logout(request):
+def logout_view(request):
     if request.user.is_anonymous:
         return Response(status=status.HTTP_401_UNAUTHORIZED)
     user = request.user
     Token.objects.filter(user_id=user.pk).update(active=False)
+    logout(request)
     return Response(status=status.HTTP_200_OK)
 
 
+@csrf_exempt
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def register(request):
+def register_view(request):
     username = request.POST.get('username')
     email = request.POST.get('email')
     password1 = request.POST.get('password1')

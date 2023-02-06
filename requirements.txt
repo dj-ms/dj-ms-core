@@ -32,5 +32,8 @@ celery
 django-celery-beat
 django-celery-results
 
+# Message broker
+pika
+
 # Sentry
 sentry-sdk

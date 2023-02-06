@@ -34,7 +34,15 @@ Build the docker image:
 docker compose build
 ```
 
-Run project:
+---
+### Run:
+
+Core service:
+```shell
+docker compose -f docker-compose.yml -f docker-compose.core.yml -f docker-compose.prod.yml up -d
+```
+
+Any microservice:
 ```shell
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```

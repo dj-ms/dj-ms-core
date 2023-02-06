@@ -19,15 +19,25 @@ nano .env
 > Note: when running locally, you don't need to build project while unless you change `requirements.txt`. 
 > It's because local code is mounted into container so your changes are reflected immediately.
 
-Build project
+Build
 ```shell
 docker compose build
 ```
 
-Run project
+
+---
+### Run
+
+Core service:
+```shell
+docker compose -f docker-compose.yml -f docker-compose.core.yml -f docker-compose.override.yml up -d
+```
+
+Any microservice:
 ```shell
 docker compose up -d
 ```
+
 
 Enter container
 ```shell

@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_celery_beat',
+    'django_celery_results',
 
     # microservice apps
     'authentication',
@@ -214,9 +215,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REDIS_URL = os.getenv('REDIS_URL', f'redis://localhost:6379')
 
 
+# -----> RABBITMQ
+RABBITMQ_URL = os.getenv('RABBITMQ_URL', 'amqp://guest:guest@localhost:5672')
+
+
 # -----> CELERY
-CELERY_BROKER_URL = f'{REDIS_URL}/2'
-CELERY_RESULT_BACKEND = f'{REDIS_URL}/3'
+CELERY_BROKER_URL = RABBITMQ_URL
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

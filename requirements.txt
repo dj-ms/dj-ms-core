@@ -30,6 +30,7 @@ uvicorn[standard]
 # Async Celery tasks
 celery
 django-celery-beat
+django-celery-results
 
 # Sentry
 sentry-sdk

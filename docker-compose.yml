@@ -24,6 +24,14 @@ services:
       interval: 3s
       timeout: 3s
       retries: 10
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-rabbitmq}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-rabbitmq}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_log:/var/log/rabbitmq
   django:
     image: harleyking/dj-ms-${DJ_MS_APP_LABEL:-core}:${DJ_MS_CORE_VERSION:-latest}
     build:
@@ -40,6 +48,7 @@ services:
         condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
+      - RABBITMQ_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
       - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
     env_file:
       - .env
@@ -57,6 +66,7 @@ services:
         condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
+      - RABBITMQ_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
       - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
     env_file:
       - .env
@@ -74,6 +84,7 @@ services:
         condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
+      - RABBITMQ_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
       - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
     env_file:
       - .env
@@ -81,4 +92,6 @@ services:
 
 volumes:
   postgres_data:
+  rabbitmq_data:
+  rabbitmq_log:
   pgadmin_data:

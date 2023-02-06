@@ -7,8 +7,9 @@ services:
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-postgres}
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     healthcheck:
@@ -26,6 +27,15 @@ services:
       retries: 10
   rabbitmq:
     image: rabbitmq:3-management-alpine
+    restart: always
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-rabbitmq}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-rabbitmq}
@@ -46,10 +56,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
-      - RABBITMQ_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
-      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+      - BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
+      - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres/${POSTGRES_DB:-postgres}
     env_file:
       - .env
   celery:
@@ -64,10 +76,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
-      - RABBITMQ_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
-      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+      - BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
+      - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres/${POSTGRES_DB:-postgres}
     env_file:
       - .env
   celery-beat:
@@ -82,10 +96,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     environment:
       - REDIS_URL=redis://redis:6379
-      - RABBITMQ_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
-      - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+      - BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
+      - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres/${POSTGRES_DB:-postgres}
     env_file:
       - .env
 

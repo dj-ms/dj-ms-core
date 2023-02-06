@@ -48,9 +48,9 @@ But all of them will be under one domain and will have unified authentication.
 - [x] Custom db router for auth models
 - [x] Static and media files served by Nginx
 - [x] Websocket support
+- [x] Message brokers integration
 - [ ] Automated CI/CD
 - [ ] Active directory authentication
-- [ ] Message brokers integration
 - [ ] Automatic discovery of microservices
 
 

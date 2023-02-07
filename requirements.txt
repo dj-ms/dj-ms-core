@@ -7,9 +7,12 @@ djangorestframework
 django-filter
 django-cors-headers
 django-cleanup
+# django-auditlog
+# temporary fix for django-auditlog. will change to original source when Jazzband merges my PR
+git+https://github.com/HarleyK1ng/django-auditlog.git@master#egg=django-auditlog
 
 # Miscroservices
-dj-ms-auth-router==1.1.0
+dj-ms-auth-router==1.2.0
 
 # Databases
 psycopg2-binary

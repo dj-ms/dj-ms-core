@@ -1,3 +1,4 @@
+from auditlog.registry import auditlog
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
@@ -73,3 +74,6 @@ class Token(AuthToken):
         except User.DoesNotExist:
             self.delete()
             return None
+
+
+auditlog.register(User)

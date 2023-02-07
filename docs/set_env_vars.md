@@ -29,16 +29,22 @@ To run second / third / etc. microservice somewhere, including server in product
 ```dotenv
 # The same secret key as in core service
 DJANGO_SECRET_KEY=<some-strict-secret-key>
+
 # Any free port, for example 5433
 POSTGRES_PORT=
+
 # Any free port, for example 5051
 PGADMIN_PORT=
+
 # Some unique label, for example "products"
 DJ_MS_APP_LABEL=
+
 # Core service's database url
 AUTH_DB_URL=postgres://postgres:postgres@host.docker.internal:5432/postgres
+
 # Core service's broker url
 BROKER_URL=amqp://rabbitmq:rabbitmq@host.docker.internal:5672
+
 # Any free port, for example 8001
 DJANGO_WEB_PORT=
 ```
@@ -55,6 +61,8 @@ In production, `DJANGO_DEBUG` is set to `False` in the `docker-compose.prod.yml`
 In other cases default value will be `True` if not set.
 You don't need to set it here unless you want to change it to `False` in _development environment_.
 
+<br>
+
 ```dotenv
 DJANGO_SECRET_KEY=
 ```
@@ -65,17 +73,23 @@ You can generate one using one of these commands:
 - `openssl rand -hex 40`
 - `python -c 'import uuid; print(uuid.uuid4().hex)'`
 
+<br>
+
 ```dotenv
 DJANGO_TIME_ZONE=
 ```
 
 Default timezone is `UTC`. You can change it to your local timezone. For example: `Europe/Warsaw`
 
+<br>
+
 ```dotenv
 DJANGO_LANGUAGE_CODE=
 ```
 
 Default language is English (`en-us`). You can change it to your local language. For example: `ru`
+
+<br>
 
 ```dotenv
 DJANGO_REST_AUTH_TOKEN_TTL=
@@ -105,17 +119,23 @@ POSTGRES_PORT=
 Which port should be exposed for **postgres** that built in the `docker-compose.yml` file?
 Default value is `5432`.
 
+<br>
+
 ```dotenv
 POSTGRES_USER=
 ```
 
 Default **postgres** username is `postgres`.
 
+<br>
+
 ```dotenv
 POSTGRES_PASSWORD=
 ```
 
 Default **postgres** password is `postgres`.
+
+<br>
 
 ```dotenv
 POSTGRES_DB=
@@ -132,11 +152,15 @@ PGADMIN_PORT=
 Which port should be exposed for **pgadmin** that built in the `docker-compose.yml` file?
 Default value is `5050`.
 
+<br>
+
 ```dotenv
 PGADMIN_DEFAULT_EMAIL=
 ```
 
 Default **PGADMIN** email is `pgadmin4@gpadmin.org`.
+
+<br>
 
 ```dotenv
 PGADMIN_DEFAULT_PASSWORD=
@@ -169,6 +193,8 @@ Which base image should be used for building the service?
 By default, `latest` tag is used.
 This setting must be exactly the same in every microservice.
 
+<br>
+
 ```dotenv
 DJ_MS_APP_LABEL=
 ```
@@ -179,6 +205,8 @@ It will be used for building appropriate docker image and as a url prefix.
 For example: label `products` will result in the following docker image: `dj-ms-products:latest`.
 And the url for the service will be: `http://localhost:8000/products/`
 
+<br>
+
 ```dotenv
 AUTH_DB_URL=
 ```
@@ -187,6 +215,8 @@ This is the most interesting part of the project! In core microservice this sett
 But! In other microservices you should set this setting to the core microservice database url.
 This allows you to use the same authentication database in all microservices.
 
+<br>
+
 ```dotenv
 BROKER_URL=
 ```
@@ -194,6 +224,8 @@ BROKER_URL=
 Same as `AUTH_DB_URL`, but for **RabbitMQ** message broker.
 Skip this setting in the core microservice.
 In other microservices set it to the core microservice broker url.
+
+<br>
 
 ```dotenv
 DJANGO_WEB_PORT=
@@ -214,6 +246,8 @@ RABBITMQ_PORT=
 Which port should be exposed for **RabbitMQ** that built in the `docker-compose.yml` file?
 Default value is `5672`.
 
+<br>
+
 ```dotenv
 RABBITMQ_MANAGEMENT_PORT=
 ```
@@ -221,11 +255,15 @@ RABBITMQ_MANAGEMENT_PORT=
 Which port should be exposed for **RabbitMQ** management that built in the `docker-compose.yml` file?
 Default value is `15672`.
 
+<br>
+
 ```dotenv
 RABBITMQ_DEFAULT_USER=
 ```
 
 Default username is `rabbitmq`.
+
+<br>
 
 ```dotenv
 RABBITMQ_DEFAULT_PASS=
@@ -242,6 +280,8 @@ SENTRY_DSN=
 ```
 
 Your **Sentry** `DSN`. You can get it from your **Sentry** project settings.
+
+<br>
 
 ```dotenv
 SENTRY_ENVIRONMENT=

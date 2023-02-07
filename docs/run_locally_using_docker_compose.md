@@ -30,21 +30,28 @@ Core service:
 docker compose -f docker-compose.yml -f docker-compose.core.yml -f docker-compose.override.yml up -d
 ```
 
+<br>
+
 Any microservice:
 ```shell
 docker compose up -d
 ```
 
+<br>
 
 Enter container
 ```shell
 docker compose exec django bash
 ```
 
+<br>
+
 Create superuser
 ```shell
 python manage.py createsuperuser
 ```
+
+<br>
 
 View logs
 ```shell

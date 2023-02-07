@@ -6,15 +6,21 @@
 I assume, you have docker with compose plugin installed on your server.
 Please, refer to the [official documentation](https://docs.docker.com/engine/install/) to install it.
 
+<br>
+
 Clone the repository to your server:
 ```shell
 git clone https://github.com/dj-ms/dj-ms-core.git
 ```
 
+<br>
+
 Go to the project directory:
 ```shell
 cd dj-ms-core
 ```
+
+<br>
 
 Create the `.env` file and set the environment variables according to the instructions.
 [Set environment variables](set_env_vars.md).
@@ -38,6 +44,8 @@ Core service:
 docker compose -f docker-compose.yml -f docker-compose.core.yml -f docker-compose.prod.yml up -d
 ```
 
+<br>
+
 Any microservice:
 ```shell
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
@@ -57,6 +65,8 @@ Ubuntu:
 sudo apt install nginx -y
 ```
 
+<br>
+
 CentOS:
 ```shell
 sudo yum install nginx -y
@@ -68,6 +78,8 @@ Create a new file in the `/etc/nginx/sites-available` directory:
 ```shell
 sudo nano /etc/nginx/sites-available/your-domain-name.com
 ```
+
+<br>
 
 Paste the following content to the file:
 ```nginx
@@ -81,15 +93,21 @@ server {
 }
 ```
 
+<br>
+
 Create a symbolic link to the `/etc/nginx/sites-enabled` directory:
 ```shell
 sudo ln -s /etc/nginx/sites-available/your-domain-name.com /etc/nginx/sites-enabled/
 ```
 
+<br>
+
 Remove the default configuration file:
 ```shell
 sudo rm /etc/nginx/sites-enabled/default
 ```
+
+<br>
 
 Restart Nginx:
 ```shell
@@ -111,12 +129,16 @@ If you see the Django admin page, then everything is fine.
 First, get some domain name from any service, for example, from [namecheap](https://www.namecheap.com) or [freenom](https://www.freenom.com).
 Create A-record for your domain name and point it to your server IP address.
 
+<br>
+
 Check, that your domain name is accessible from the internet:
 ```shell
 curl -I https://your-domain-name.com
 ```
 
-Sometimes you need to wait some time, until your domain name will be accessible from the internet. Maybe 5 minutes or more.
+<br>
+
+> Sometimes you need to wait some time, until your domain name will be accessible from the internet. Maybe 5 minutes or more.
 
 ### Install certbot
 
@@ -124,6 +146,8 @@ Ubuntu:
 ```shell
 sudo apt install python3-certbot-nginx -y
 ```
+
+<br>
 
 CentOS:
 ```shell
@@ -153,6 +177,8 @@ If you see the Django admin page, then everything is fine.
 ```shell
 sudo crontab -e
 ```
+
+<br>
 
 Add the following line to the end of the file:
 ```shell

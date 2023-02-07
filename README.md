@@ -56,8 +56,12 @@ But all of them will be under one domain and will have unified authentication.
 
 ---
 ## Requirements
+
 - Docker and compose - [Download](https://docs.docker.com/get-docker/)
 > Of course, you can just run project without docker right on your machine. But docker is recommended way.
+
+<br>
+
 - Python 3.10 - [Download](https://www.python.org/downloads/)
 > You will need Python only if you want to run this project locally without docker.
 

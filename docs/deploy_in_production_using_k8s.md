@@ -29,6 +29,8 @@ Create secret from `.env` file:
 kubectl create secret generic dj-ms-core-secret --from-env-file=.env
 ```
 
+<br>
+
 Apply deployment and service:
 ```shell
 kubectl apply -f kubernetes-deployment.yml

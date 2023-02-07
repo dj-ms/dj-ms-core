@@ -16,12 +16,8 @@ Go to the project directory:
 cd dj-ms-core
 ```
 
-Copy the `.example.env` file to `.env`:
-```shell
-cp .example.env .env
-```
-
-Edit the `.env` file and set the environment variables.
+Create the `.env` file and set the environment variables according to the instructions.
+[Set environment variables](set_env_vars.md).
 ```shell
 nano .env
 ```

@@ -19,3 +19,6 @@ services:
   celery-beat:
     volumes:
       - .:/home/django/
+
+volumes:
+  pgadmin_data:

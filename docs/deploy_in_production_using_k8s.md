@@ -17,15 +17,13 @@ Also, you need some PostgreSQL database that you can access from your Kubernetes
 ---
 ## Deploy project
 ### Set environment variables
-Copy the `.example.env` file to `.env`:
-```shell
-cp .example.env .env
-```
 
-Edit the `.env` file and set the environment variables:
+Create the `.env` file and set the environment variables according to the instructions.
+[Set environment variables](set_env_vars.md).
 ```shell
 nano .env
 ```
+
 
 Create secret from `.env` file:
 ```shell

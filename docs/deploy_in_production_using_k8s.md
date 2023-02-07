@@ -12,10 +12,6 @@ I assume that you have a Kubernetes cluster, and you can access it using `kubect
 
 Also, you need some PostgreSQL database that you can access from your Kubernetes cluster.
 
-
-
----
-## Deploy project
 ### Set environment variables
 
 Create the `.env` file and set the environment variables according to the instructions.
@@ -24,6 +20,9 @@ Create the `.env` file and set the environment variables according to the instru
 nano .env
 ```
 
+
+---
+## Deploy project
 
 Create secret from `.env` file:
 ```shell

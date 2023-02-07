@@ -2,14 +2,14 @@
 
 
 > Note: you don't need to set all of these variables. docker compose files already have default values for most of them. But in production you have to set at least `DJANGO_SECRET_KEY`.
+---
+Also, when running / deploying microservices, there is some requirements:
 
-> Also, when running / deploying microservices, there is some requirements:
-> 
 > - use exact the same `DJANGO_SECRET_KEY` for all microservices;
 > - all services except `core` needs to have `AUTH_DB_URL` set to `core` service's `DATABASE_URL`;
 > - all services except `core` needs to have `BROKER_URL` set to `core` service's `BROKER_URL`.
-> 
-> other requirements will be explained below.
+
+Other requirements will be explained below.
 
 
 ---

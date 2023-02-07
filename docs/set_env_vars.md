@@ -1,7 +1,7 @@
 # Set environment variables
 
 
-> #### Note: you don't need to set all of these variables. docker compose files already have default values for most of them. But in production you have to set at least `DJANGO_SECRET_KEY`.
+> Note: you don't need to set all of these variables. docker compose files already have default values for most of them. But in production you have to set at least `DJANGO_SECRET_KEY`.
 
 > Also, when running / deploying microservices, there is some requirements:
 > 
@@ -15,7 +15,6 @@
 ---
 ## General
 
----
 ### Core service
 To get started with core service on local machine, you don't need to set any environment variables.
 To deploy it to the server in production mode, `DJANGO_SECRET_KEY` will be enough:
@@ -24,7 +23,6 @@ To deploy it to the server in production mode, `DJANGO_SECRET_KEY` will be enoug
 DJANGO_SECRET_KEY=<some-strict-secret-key>
 ```
 
----
 ### Fork app / microservice
 To run second / third / etc. microservice somewhere, including server in production mode, you need to set at least the following variables:
 
@@ -98,7 +96,6 @@ Default value is `86400` seconds (24 hours).
 DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
 ```
 
----
 ### Postgres
 
 ```dotenv
@@ -126,8 +123,6 @@ POSTGRES_DB=
 
 Default **postgres** database is `postgres`.
 
-
----
 ### PGAdmin
 
 ```dotenv

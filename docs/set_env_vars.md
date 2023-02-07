@@ -11,6 +11,41 @@
 > 
 > other requirements will be explained below.
 
+
+---
+## General
+
+---
+### Core service
+To get started with core service on local machine, you don't need to set any environment variables.
+To deploy it to the server in production mode, `DJANGO_SECRET_KEY` will be enough:
+
+```dotenv
+DJANGO_SECRET_KEY=<some-strict-secret-key>
+```
+
+---
+### Fork app / microservice
+To run second / third / etc. microservice somewhere, including server in production mode, you need to set at least the following variables:
+
+```dotenv
+# The same secret key as in core service
+DJANGO_SECRET_KEY=<some-strict-secret-key>
+# Any free port, for example 5433
+POSTGRES_PORT=
+# Any free port, for example 5051
+PGADMIN_PORT=
+# Some unique label, for example "products"
+DJ_MS_APP_LABEL=
+# Core service's database url
+AUTH_DB_URL=postgres://postgres:postgres@host.docker.internal:5432/postgres
+# Core service's broker url
+BROKER_URL=amqp://rabbitmq:rabbitmq@host.docker.internal:5672
+# Any free port, for example 8001
+DJANGO_WEB_PORT=
+```
+
+
 ---
 ## Django
 
@@ -70,22 +105,26 @@ DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
 POSTGRES_PORT=
 ```
 
-Which port should be exposed for postgres that built in the `docker-compose.yml` file?
+Which port should be exposed for **postgres** that built in the `docker-compose.yml` file?
 Default value is `5432`.
 
 ```dotenv
 POSTGRES_USER=
 ```
 
-Default postgres username is `postgres`.
+Default **postgres** username is `postgres`.
 
 ```dotenv
 POSTGRES_PASSWORD=
 ```
 
+Default **postgres** password is `postgres`.
+
 ```dotenv
 POSTGRES_DB=
 ```
+
+Default **postgres** database is `postgres`.
 
 
 ---
@@ -95,13 +134,20 @@ POSTGRES_DB=
 PGADMIN_PORT=
 ```
 
+Which port should be exposed for **pgadmin** that built in the `docker-compose.yml` file?
+Default value is `5050`.
+
 ```dotenv
 PGADMIN_DEFAULT_EMAIL=
 ```
 
+Default **PGADMIN** email is `pgadmin4@gpadmin.org`.
+
 ```dotenv
 PGADMIN_DEFAULT_PASSWORD=
 ```
+
+Default **PGADMIN** password is `admin`.
 
 
 ---
@@ -120,6 +166,48 @@ Don't set database number in the url.
 ---
 ## Microservices
 
+```dotenv
+DJ_MS_CORE_VERSION=
+```
+
+Which base image should be used for building the service? 
+By default, `latest` tag is used.
+This setting must be exactly the same in every microservice.
+
+```dotenv
+DJ_MS_APP_LABEL=
+```
+
+In main microservice this setting should be skipped.
+In every other microservice you should set a unique label for the app.
+It will be used for building appropriate docker image and as a url prefix.
+For example: label `products` will result in the following docker image: `dj-ms-products:latest`.
+And the url for the service will be: `http://localhost:8000/products/`
+
+```dotenv
+AUTH_DB_URL=
+```
+
+This is the most interesting part of the project! In core microservice this setting must be skipped.
+But! In other microservices you should set this setting to the core microservice database url.
+This allows you to use the same authentication database in all microservices.
+
+```dotenv
+BROKER_URL=
+```
+
+Same as `AUTH_DB_URL`, but for **RabbitMQ** message broker.
+Skip this setting in the core microservice.
+In other microservices set it to the core microservice broker url.
+
+```dotenv
+DJANGO_WEB_PORT=
+```
+
+Which http port should be exposed for entire service?
+By default, `8000` port is used.
+But if you're running multiple services on the same machine, you have to change it to another port.
+
 
 ---
 ## RabbitMQ
@@ -128,21 +216,27 @@ Don't set database number in the url.
 RABBITMQ_PORT=
 ```
 
+Which port should be exposed for **RabbitMQ** that built in the `docker-compose.yml` file?
+Default value is `5672`.
+
 ```dotenv
 RABBITMQ_MANAGEMENT_PORT=
 ```
+
+Which port should be exposed for **RabbitMQ** management that built in the `docker-compose.yml` file?
+Default value is `15672`.
 
 ```dotenv
 RABBITMQ_DEFAULT_USER=
 ```
 
+Default username is `rabbitmq`.
+
 ```dotenv
 RABBITMQ_DEFAULT_PASS=
 ```
 
-
----
-## Nginx
+Default password is `rabbitmq`.
 
 
 ---
@@ -152,6 +246,11 @@ RABBITMQ_DEFAULT_PASS=
 SENTRY_DSN=
 ```
 
+Your **Sentry** `DSN`. You can get it from your **Sentry** project settings.
+
 ```dotenv
 SENTRY_ENVIRONMENT=
 ```
+
+Default value is `development`.
+

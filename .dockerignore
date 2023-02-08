@@ -13,3 +13,7 @@ runtime.txt
 .github
 README.md
 LICENSE
+nginx/default.d
+Services
+build.sh
+deploy.sh

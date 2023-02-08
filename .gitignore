@@ -7,3 +7,5 @@
 db.sqlite3
 static
 /media/
+nginx/default.d/*.conf
+!nginx/default.d/app-locations.conf

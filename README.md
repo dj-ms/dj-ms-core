@@ -41,7 +41,7 @@ But all of them will be under one domain and will have unified authentication.
 ## What's inside
 - [x] Unified authentication in all microservices
 - [x] Docker compose both for local development and production
-- [x] Celery, Celery Beat, Redis, Postgres, Nginx and PGAdmin included in docker compose
+- [x] Celery, Celery Beat, RabbitMQ, Redis, Postgres, Nginx and PGAdmin included in docker compose
 - [x] Kubernetes deployment
 - [x] Expiring token authentication
 - [x] Custom user model
@@ -49,7 +49,7 @@ But all of them will be under one domain and will have unified authentication.
 - [x] Static and media files served by Nginx
 - [x] Websocket support
 - [x] Object changes logging to one DB with [django-auditlog](https://github.com/jazzband/django-auditlog)
-- [ ] Message brokers integration (There is RabbitMQ in docker compose. But at this time it's only used by Celery)
+- [ ] Message brokers integration (there is RabbitMQ in docker compose, but at this time it's only used by Celery)
 - [ ] Automated CI/CD
 - [ ] Active directory authentication
 - [ ] Automatic discovery of microservices
@@ -79,8 +79,9 @@ But all of them will be under one domain and will have unified authentication.
 
 ---
 ## Examples
-You can find example microservice app under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.
-Also, there is an example microservice app: [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app).
+You can find example microservice apps under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.
+
+Also, there is special example repo: [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app).
 
 
 ---

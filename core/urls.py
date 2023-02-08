@@ -27,17 +27,20 @@ URL_PREFIX = APP_LABEL + '/' if APP_LABEL else ''
 urlpatterns = [
     path(URL_PREFIX + 'admin/', admin.site.urls),
     path('api/auth/', include('authentication.api.urls'), name='authentication'),
-    path('api/' + URL_PREFIX, include('app.api.urls'), name='api'),
-    path(URL_PREFIX, include('app.urls')),
 ]
 
 
 def get_redirect_url():
     if URL_PREFIX:
         return redirect(f'{URL_PREFIX}')
-    return redirect(URL_PREFIX + 'admin')
+    return redirect(URL_PREFIX + 'admin/')
 
 
 urlpatterns += [
     path('', lambda req: get_redirect_url()),
+]
+
+urlpatterns += [
+    path('api/' + URL_PREFIX, include('app.api.urls'), name='api'),
+    path(URL_PREFIX, include('app.urls')),
 ]

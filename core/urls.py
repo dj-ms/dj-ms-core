@@ -13,8 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import logging
-
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path, include

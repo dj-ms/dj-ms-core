@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from django.urls import path, include
+from django.urls import path
 
 from core.urls import URL_PREFIX
 

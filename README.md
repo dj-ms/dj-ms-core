@@ -41,13 +41,12 @@ But all of them will be under one domain and will have unified authentication.
 ## What's inside
 - [x] Unified authentication in all microservices
 - [x] Docker compose both for local development and production
-- [x] Celery, Celery Beat, RabbitMQ, Redis, Postgres and Nginx included in docker compose
+- [x] Celery, Celery Beat, RabbitMQ, Postgres and Nginx included in docker compose
 - [x] Kubernetes deployment
 - [x] Expiring token authentication
 - [x] Custom user model
 - [x] Custom db router for auth models
 - [x] Static and media files served by Nginx
-- [x] Websocket support
 - [x] Object changes logging to one DB with [django-auditlog](https://github.com/jazzband/django-auditlog)
 - [ ] Message brokers integration (there is RabbitMQ in docker compose, but at this time it's only used by Celery)
 - [ ] Automated CI/CD

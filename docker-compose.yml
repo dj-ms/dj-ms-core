@@ -17,14 +17,6 @@ services:
       interval: 3s
       timeout: 3s
       retries: 10
-  redis:
-    image: redis:alpine
-    restart: always
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      interval: 3s
-      timeout: 3s
-      retries: 10
   rabbitmq:
     image: rabbitmq:3-management-alpine
     restart: always
@@ -56,10 +48,7 @@ services:
         condition: service_healthy
       rabbitmq:
           condition: service_healthy
-      redis:
-        condition: service_healthy
     environment:
-      - REDIS_URL=redis://${REDIS_HOST:-redis}:${REDIS_PORT:-6379}
       - BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres/${POSTGRES_DB:-postgres}
     env_file:
@@ -76,10 +65,7 @@ services:
         condition: service_healthy
       rabbitmq:
           condition: service_healthy
-      redis:
-        condition: service_healthy
     environment:
-      - REDIS_URL=redis://${REDIS_HOST:-redis}:${REDIS_PORT:-6379}
       - BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres/${POSTGRES_DB:-postgres}
     env_file:
@@ -96,10 +82,7 @@ services:
         condition: service_healthy
       rabbitmq:
           condition: service_healthy
-      redis:
-        condition: service_healthy
     environment:
-      - REDIS_URL=redis://${REDIS_HOST:-redis}:${REDIS_PORT:-6379}
       - BROKER_URL=amqp://${RABBITMQ_DEFAULT_USER:-rabbitmq}:${RABBITMQ_DEFAULT_PASS:-rabbitmq}@rabbitmq:5672
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres/${POSTGRES_DB:-postgres}
     env_file:

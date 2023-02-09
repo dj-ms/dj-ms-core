@@ -145,19 +145,6 @@ Default **postgres** database is `postgres`.
 
 
 ---
-## Redis
-
-```dotenv
-REDIS_URL=
-```
-
-By default, the project uses redis, built in the `docker-compose.yml` file.
-So you don't need to set this setting unless you want to use another redis.
-Default value is `redis://redis:6379`
-Don't set database number in the url.
-
-
----
 ## Microservices
 
 ```dotenv

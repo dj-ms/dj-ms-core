@@ -72,16 +72,3 @@ Now you can access admin panel at `http://localhost:8000/admin/`.
 
 If you have set `DJANGO_URL_PREFIX` in `.env` file, 
 then you should access admin panel at `http://localhost:8000/<DJANGO_URL_PREFIX>/admin/`.
-
-
----
-## PGAdmin
-
-On local environment, you can use PGAdmin to access database.
-
-By default, PGAdmin is available at `http://localhost:5050/`.
-
-But if you have set `PGADMIN_PORT` in `.env` file, 
-then you should access PGAdmin at `http://localhost:<PGADMIN_PORT>/`.
-
-Default credentials are `pgadmin4@pgadmin.org` and `admin`.

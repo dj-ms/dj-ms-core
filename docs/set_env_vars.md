@@ -143,31 +143,6 @@ POSTGRES_DB=
 
 Default **postgres** database is `postgres`.
 
-### PGAdmin
-
-```dotenv
-PGADMIN_PORT=
-```
-
-Which port should be exposed for **pgadmin** that built in the `docker-compose.yml` file?
-Default value is `5050`.
-
-<br>
-
-```dotenv
-PGADMIN_DEFAULT_EMAIL=
-```
-
-Default **PGADMIN** email is `pgadmin4@gpadmin.org`.
-
-<br>
-
-```dotenv
-PGADMIN_DEFAULT_PASSWORD=
-```
-
-Default **PGADMIN** password is `admin`.
-
 
 ---
 ## Redis

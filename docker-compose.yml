@@ -55,8 +55,6 @@ services:
       - .env
   celery:
     image: harleyking/dj-ms-${DJ_MS_APP_LABEL:-core}:${DJ_MS_CORE_VERSION:-latest}
-    build:
-      context: .
     command: celery -A core worker -l info --concurrency 1 -P solo -E
     depends_on:
       django:
@@ -72,8 +70,6 @@ services:
       - .env
   celery-beat:
     image: harleyking/dj-ms-${DJ_MS_APP_LABEL:-core}:${DJ_MS_CORE_VERSION:-latest}
-    build:
-      context: .
     command: celery -A core beat -l info --scheduler django_celery_beat.schedulers.DatabaseScheduler
     depends_on:
       django:

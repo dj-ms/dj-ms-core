@@ -41,7 +41,7 @@ docker compose up -d
 
 Enter container
 ```shell
-docker compose exec django bash
+docker compose exec django sh
 ```
 
 <br>

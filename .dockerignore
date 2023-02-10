@@ -1,10 +1,10 @@
 .idea
 .git
 venv
-static
-media
+/docs/
+/static/
+/media/
 .dockerignore
-.example.env
 .gitignore
 db.sqlite3
 docker-compose.*
@@ -17,3 +17,4 @@ nginx/default.d
 Services
 build.sh
 deploy.sh
+.bash_history

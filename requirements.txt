@@ -1,5 +1,7 @@
 # Python
 python-dotenv
+setuptools>=65.5.1
+certifi>=2022.12.07
 
 # Django
 Django~=4.1

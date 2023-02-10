@@ -9,3 +9,4 @@ static
 /media/
 nginx/default.d/*.conf
 !nginx/default.d/app-locations.conf
+.bash_history

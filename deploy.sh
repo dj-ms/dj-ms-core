@@ -110,7 +110,8 @@ if [[ ! -f nginx/default.d/${DJ_MS_APP_LABEL}.conf ]]; then
   Created nginx/default.d/${DJ_MS_APP_LABEL}.conf.
   Copy it to /etc/nginx/default.d/ manually and reload Nginx:
 
-  > cp nginx/default.d/${DJ_MS_APP_LABEL}.conf /etc/nginx/default.d/${DJ_MS_APP_LABEL}.conf
+  > cp nginx/default.d/${DJ_MS_APP_LABEL}.conf /etc/nginx/sites-available/${DJ_MS_APP_LABEL}.conf
+  > ln -s /etc/nginx/sites-available/${DJ_MS_APP_LABEL}.conf /etc/nginx/sites-enabled/${DJ_MS_APP_LABEL}.conf
   > nginx -s reload
 
   Tip: If you want to recreate the file, delete it and run this script again:

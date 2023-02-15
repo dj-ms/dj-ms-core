@@ -1,7 +1,5 @@
 services:
   django:
-    expose:
-      - 8000
     entrypoint: /home/django/entrypoint.prod.sh
     command: gunicorn core.wsgi
     environment:

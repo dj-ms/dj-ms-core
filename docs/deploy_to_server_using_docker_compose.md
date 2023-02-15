@@ -56,6 +56,23 @@ And that's all the difference between running locally and running in production.
 So you can use all the commands you used to run locally. Just add `-f docker-compose.yml -f docker-compose.prod.yml` to them.
 
 
+> On master node you might need to open ports for DB and RabbitMQ. 
+> Search solution in the internet, because it depends on your cloud provider, OS, etc.
+> To open ports in VPS on Ubuntu, you can use the following commands:
+> ```shell
+> sudo ufw allow 5432/tcp
+> sudo ufw allow 5672/tcp
+> sudo ufw allow 15672/tcp
+> sudo iptables -I INPUT -p tcp -m tcp --dport 5432 -j ACCEPT
+> sudo iptables -I INPUT -p tcp -m tcp --dport 5672 -j ACCEPT
+> sudo iptables -I INPUT -p tcp -m tcp --dport 15672 -j ACCEPT
+> ```
+> And then save the rules:
+> ```shell
+> sudo iptables-save > /etc/iptables/rules.v4
+> ```
+> This is not a final solution, but it works for me.
+
 ## Set up Nginx
 
 ### Install Nginx

@@ -81,7 +81,7 @@ create_nginx_conf () {
   Tip: If you want to recreate the file, delete it and run this script again with -rno option:
 
   > rm nginx/default.d/${DJ_MS_APP_LABEL}.conf
-  > ./deploy.sh -rn
+  > ./deploy.sh -rno
   "
 }
 

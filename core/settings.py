@@ -42,6 +42,8 @@ ALLOWED_HOSTS = [
     'localhost'
 ]
 
+ALLOWED_HOSTS += os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
+
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ALLOWED_ORIGINS = (

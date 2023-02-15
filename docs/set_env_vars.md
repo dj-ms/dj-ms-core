@@ -1,7 +1,9 @@
 # Set environment variables
 
 
-> Note: you don't need to set all of these variables. docker compose files already have default values for most of them. But in production you have to set at least `DJANGO_SECRET_KEY`.
+> Note: you don't need to set all of these variables.
+> Docker compose files already have default values for most of them.
+> But in production you have to set at least `DJANGO_SECRET_KEY`.
 ---
 Also, when running / deploying microservices, there is some requirements:
 
@@ -17,14 +19,16 @@ Other requirements will be explained below.
 
 ### Core service
 To get started with core service on local machine, you don't need to set any environment variables.
-To deploy it to the server in production mode, `DJANGO_SECRET_KEY` will be enough:
+To deploy it to the server in production mode, `DJANGO_SECRET_KEY`, 
+`DJANGO_ALLOWED_HOSTS` and `DJANGO_CSRF_TRUSTED_ORIGINS` will be enough:
 
 ```dotenv
 DJANGO_SECRET_KEY=<some-strict-secret-key>
 ```
 
 ### Fork app / microservice
-To run second / third / etc. microservice somewhere, including server in production mode, you need to set at least the following variables:
+To run second / third / etc. microservice somewhere, including server in production mode, 
+you need to set at least the following variables:
 
 ```dotenv
 # The same secret key as in core service
@@ -74,6 +78,16 @@ You can generate one using one of these commands:
 - `python -c 'import uuid; print(uuid.uuid4().hex)'`
 
 <br>
+
+
+```dotenv
+DJANGO_ALLOWED_HOSTS=<YOUR_HOSTNAME>
+DJANGO_CSRF_TRUSTED_ORIGINS=<YOUR_HOSTNAME_WITH_HTTP_SCHEMA>
+```
+
+For example, you're deploying the project to the server with the hostname `example.com`.
+Then you should set these variables to `example.com` and `https://example.com` respectively.
+
 
 ```dotenv
 DJANGO_TIME_ZONE=

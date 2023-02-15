@@ -81,8 +81,8 @@ You can generate one using one of these commands:
 
 
 ```dotenv
-DJANGO_ALLOWED_HOSTS=<YOUR_HOSTNAME>
-DJANGO_CSRF_TRUSTED_ORIGINS=<YOUR_HOSTNAME_WITH_HTTP_SCHEMA>
+DJANGO_ALLOWED_HOSTS="<YOUR_HOSTNAME>,<ANOTHER_HOSTNAME>"
+DJANGO_CSRF_TRUSTED_ORIGINS="<YOUR_HOSTNAME_WITH_HTTP_SCHEMA>,<ANOTHER_HOSTNAME>"
 ```
 
 For example, you're deploying the project to the server with the hostname `example.com`.

@@ -60,27 +60,27 @@ if [[ -z "${DJ_MS_APP_LABEL}" ]]; then
 fi
 
 create_nginx_conf () {
-  cp nginx/default.d/app-locations.conf nginx/default.d/"${DJ_MS_APP_LABEL}".conf
+  cp nginx/app-locations.conf nginx/"${DJ_MS_APP_LABEL}".conf
   DJANGO_WEB_PORT=$(grep DJANGO_WEB_PORT .env | xargs | awk -F "=" '{print $2}')
   if [[ $DJ_MS_APP_LABEL == 'core' ]]; then
-    sed_alt -i "s|DJ_MS_APP_LABEL/||g" nginx/default.d/"${DJ_MS_APP_LABEL}".conf
-    sed_alt -i "s|DJANGO_WEB_PORT|$DJANGO_WEB_PORT|g" nginx/default.d/"${DJ_MS_APP_LABEL}".conf
+    sed_alt -i "s|DJ_MS_APP_LABEL/||g" nginx/"${DJ_MS_APP_LABEL}".conf
+    sed_alt -i "s|DJANGO_WEB_PORT|$DJANGO_WEB_PORT|g" nginx/"${DJ_MS_APP_LABEL}".conf
   else
-    sed_alt -i "s/DJ_MS_APP_LABEL/$DJ_MS_APP_LABEL/g" nginx/default.d/"${DJ_MS_APP_LABEL}".conf
-    sed_alt -i "s/DJANGO_WEB_PORT/$DJANGO_WEB_PORT/g" nginx/default.d/"${DJ_MS_APP_LABEL}".conf
+    sed_alt -i "s/DJ_MS_APP_LABEL/$DJ_MS_APP_LABEL/g" nginx/"${DJ_MS_APP_LABEL}".conf
+    sed_alt -i "s/DJANGO_WEB_PORT/$DJANGO_WEB_PORT/g" nginx/"${DJ_MS_APP_LABEL}".conf
   fi
 
   echo "
-  Created nginx/default.d/${DJ_MS_APP_LABEL}.conf.
-  Copy it to /etc/nginx/default.d/ manually and reload Nginx:
+  Created nginx/${DJ_MS_APP_LABEL}.conf.
+  Copy it to /etc/nginx/ manually and reload Nginx:
 
-  > cp nginx/default.d/${DJ_MS_APP_LABEL}.conf /etc/nginx/sites-available/${DJ_MS_APP_LABEL}.conf
+  > cp nginx/${DJ_MS_APP_LABEL}.conf /etc/nginx/sites-available/${DJ_MS_APP_LABEL}.conf
   > ln -s /etc/nginx/sites-available/${DJ_MS_APP_LABEL}.conf /etc/nginx/sites-enabled/${DJ_MS_APP_LABEL}.conf
   > nginx -s reload
 
   Tip: If you want to recreate the file, delete it and run this script again with -rno option:
 
-  > rm nginx/default.d/${DJ_MS_APP_LABEL}.conf
+  > rm nginx/${DJ_MS_APP_LABEL}.conf
   > ./deploy.sh -rno
   "
 }
@@ -128,7 +128,7 @@ else
   compose exec -it nginx nginx -s reload
 fi
 
-if [[ ! -f nginx/default.d/${DJ_MS_APP_LABEL}.conf || $rn ]]; then
+if [[ ! -f nginx/${DJ_MS_APP_LABEL}.conf || $rn ]]; then
   create_nginx_conf
 fi
 

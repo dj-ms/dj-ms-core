@@ -148,11 +148,11 @@ Default **postgres** database is `postgres`.
 ## Microservices
 
 ```dotenv
-DJ_MS_CORE_VERSION=
+DOCKER_BASE_IMAGE=
 ```
 
 Which base image should be used for building the service? 
-By default, `latest` tag is used.
+By default, `harleyking/dj-ms-core:latest` image is used.
 This setting must be exactly the same in every microservice.
 
 <br>

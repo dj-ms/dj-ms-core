@@ -52,11 +52,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 if $build; then
-  TAG=$(grep DJ_MS_CORE_VERSION .env | xargs | awk -F "=" '{print $2}')
-  if [[ -z "${TAG}" ]]; then
-    TAG="latest"
+  DOCKER_BASE_IMAGE=$(grep DOCKER_BASE_IMAGE .env | xargs | awk -F "=" '{print $2}')
+  if [[ -z "${DOCKER_BASE_IMAGE}" ]]; then
+    DOCKER_BASE_IMAGE="harleyking/dj-ms-core:latest"
   fi
-  . build.sh -t "$TAG" || exit 126
+  . build.sh -t "$DOCKER_BASE_IMAGE" || exit 126
 fi
 
 service_scale () {

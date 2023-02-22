@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dj-ms-core-config
+data:
+  DJANGO_LOGLEVEL: "info"
+  DEBUG: "True"
+  DJANGO_ALLOWED_HOSTS: "45.146.164.9,core.k8s.dj-ms.dev"
+  DJANGO_CSRF_TRUSTED_ORIGINS: "http://45.146.164.9,https://core.k8s.dj-ms.dev"
+  DJANGO_SECRET_KEY: change-me

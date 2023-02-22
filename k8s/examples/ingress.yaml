@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dj-ms-core
+  labels:
+    app.kubernetes.io/name: dj-ms-core
+    app.kubernetes.io/component: web
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dj-ms-core
+                port:
+                  name: http
+      host: core.k8s.dj-ms.dev
+  tls:
+    - hosts:
+        - core.k8s.dj-ms.dev
+      secretName: letsencrypt-production

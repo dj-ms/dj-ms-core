@@ -18,3 +18,4 @@ Services
 build.sh
 deploy.sh
 .bash_history
+k8s

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dj-ms-core
+  namespace: dj-ms-core
   labels:
     app.kubernetes.io/name: dj-ms-core
     app.kubernetes.io/component: web
@@ -19,8 +20,13 @@ spec:
     spec:
       containers:
         - name: web
-          image: harleyking/dj-ms-core:0.8.0
+          image: harleyking/dj-ms-core:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
               name: http
+          envFrom:
+            - configMapRef:
+                name: dj-ms-core-config
+            - secretRef:
+                name: dj-ms-core-secret

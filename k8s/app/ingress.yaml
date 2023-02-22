@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dj-ms-core
+  namespace: dj-ms-core
   labels:
     app.kubernetes.io/name: dj-ms-core
     app.kubernetes.io/component: web
@@ -19,8 +20,8 @@ spec:
                 name: dj-ms-core
                 port:
                   name: http
-      host: core.k8s.dj-ms.dev
+      host: k8s.anttek.io
   tls:
     - hosts:
-        - core.k8s.dj-ms.dev
+        - k8s.anttek.io
       secretName: letsencrypt-production

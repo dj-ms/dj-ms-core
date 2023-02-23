@@ -1,6 +1,10 @@
 # Deploy to production using Kubernetes
 
 
+```shell
+kubectl create namespace dj-ms-core
+```
+
 ---
 ## Postgres
 

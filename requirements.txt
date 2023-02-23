@@ -22,6 +22,7 @@ dj-database-url
 
 # Deployment
 gunicorn
+whitenoise
 
 # Async Celery tasks
 celery

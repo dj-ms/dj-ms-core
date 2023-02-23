@@ -20,8 +20,8 @@ spec:
                 name: dj-ms-core
                 port:
                   name: http
-      host: k8s.anttek.io
+      host: dj-ms-core.k8s.anttek.io
   tls:
     - hosts:
-        - k8s.anttek.io
+        - dj-ms-core.k8s.anttek.io
       secretName: letsencrypt-production

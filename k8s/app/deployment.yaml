@@ -21,6 +21,7 @@ spec:
       containers:
         - name: web
           image: harleyking/dj-ms-core:latest
+          command: ["/home/django/entrypoint.prod.sh", "gunicorn", "core.wsgi"]
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000

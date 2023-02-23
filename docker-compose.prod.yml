@@ -1,7 +1,6 @@
 services:
   django:
-    entrypoint: /home/django/entrypoint.prod.sh
-    command: gunicorn core.wsgi
+    command: /home/django/entrypoint.prod.sh gunicorn core.wsgi
     environment:
       - DJANGO_DEBUG=False
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?DJANGO_SECRET_KEY}

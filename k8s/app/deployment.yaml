@@ -22,7 +22,31 @@ spec:
         - name: web
           image: harleyking/dj-ms-core:latest
           command: ["/home/django/entrypoint.prod.sh", "gunicorn", "core.wsgi"]
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: dj-ms-core-config
+            - secretRef:
+                name: dj-ms-core-secret
+        - name: celery
+          image: harleyking/dj-ms-core:latest
+          command: ["celery", "-A", "core", "worker", "-l", "info", "--concurrency", "1", "-P", "solo", "-E"]
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: dj-ms-core-config
+            - secretRef:
+                name: dj-ms-core-secret
+        - name: celery-beat
+          image: harleyking/dj-ms-core:latest
+          command: ["celery", "-A", "core", "beat", "-l", "info", "--scheduler", "django_celery_beat.schedulers.DatabaseScheduler"]
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
               name: http

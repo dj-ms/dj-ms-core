@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rabbitmq
+  name: rabbitmq
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: rabbitmq
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: rabbitmq
+        - name: RABBITMQ_DEFAULT_PASS
+          value: rabbitmq
+        envFrom:
+        - secretRef:
+            name: dj-ms-core-secret
+        image: rabbitmq
+        imagePullPolicy: Always
+        name: rabbitmq
+        ports:
+        - containerPort: 5671
+          protocol: TCP
+        - containerPort: 5672
+          protocol: TCP
+        - containerPort: 4369
+          protocol: TCP
+        - containerPort: 15672
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 3

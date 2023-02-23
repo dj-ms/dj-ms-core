@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
-  namespace: dj-ms-core
 spec:
   replicas: 1
   selector:

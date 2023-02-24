@@ -2,7 +2,8 @@
   
 > **Note:** This is just an example.  
 > Please, review all the files in the `k8s` directory before applying them to your cluster.
-
+  
+  
 ---
 ## Prerequisites
   
@@ -12,7 +13,7 @@
 Copy example files  
   
 ```shell
-cp -r k8s/examples k8s/production
+cp -r k8s/examples/app k8s/app
 ```
   
 Create a namespace  
@@ -21,13 +22,15 @@ Create a namespace
 kubectl create namespace dj-ms-core
 ```
   
+  
+---
 ### PostgreSQL
   
 If you don't have a PostgreSQL database, you can install it using the following commands:  
   
 ```shell
 kubectl create namespace postgres
-kubectl apply -f k8s/postgres -n postgres
+kubectl apply -f k8s/examples/postgres -n postgres
 ```
 
 You will need to create a database and a user for your application.  
@@ -70,6 +73,7 @@ GRANT ALL PRIVILEGES ON DATABASE dj_ms_core TO dj_ms_core;
 ```
   
   
+---
 ### RabbitMQ
   
 If you don't have a RabbitMQ cluster, you can install it using the following commands:
@@ -77,7 +81,7 @@ If you don't have a RabbitMQ cluster, you can install it using the following com
 ```shell
 kubectl create namespace rabbitmq
 kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml" -n rabbitmq
-kubectl apply -f k8s/rabbitmq -n rabbitmq
+kubectl apply -f k8s/examples/rabbitmq -n rabbitmq
 ```
   
 You will need to create a user for your application.
@@ -107,15 +111,36 @@ Grant permissions:
 kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl set_user_tags dj_ms_core administrator
 kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl set_permissions -p / dj_ms_core ".*" ".*" ".*"
 ```
-
+  
+  
+---
+### Ingress
+  
+If you don't have an Ingress controller, you can install ingres-nginx using the following commands:  
+  
+```shell
+kubectl apply -f k8s/examples/ingress-nginx
+```
+  
+  
+---
+### Cert Manager
+  
+If you don't have a Cert Manager, you can install it using the following commands:  
+  
+```shell
+kubectl create namespace cert-manager
+kubectl apply -f k8s/examples/cert-manager -n cert-manager
+```
+  
   
 ---
 ## Deploy
   
-First of all, you should review all the files in the `k8s/production` directory.  
+First of all, you should review all the files in the `k8s/app` directory.  
 Change the values as you need.  
   
-After that, you should create an `.env` file in the `k8s/production/app` directory.  
+After that, you should create an `.env` file in the `k8s/app` directory.  
 It should contain the following variables:  
   - `DJANGO_DEBUG` - normally `False` for production
   - `DJANGO_SECRET_KEY` - some random string. You can generate one with `openssl rand -base64 32`
@@ -127,8 +152,8 @@ It should contain the following variables:
 Then you can create a secret and deploy the application:  
   
 ```shell
-kubectl create secret generic dj-ms-core-secret --from-env-file=k8s/production/app/.env -n dj-ms-core
-kubectl apply -f k8s/production/app -n dj-ms-core
+kubectl create secret generic dj-ms-core-secret --from-env-file=k8s/app/.env -n dj-ms-core
+kubectl apply -f k8s/app -n dj-ms-core
 ```
 
   

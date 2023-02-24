@@ -10,5 +10,5 @@ static
 nginx/default.d/*.conf
 !nginx/default.d/app-locations.conf
 .bash_history
-k8s
 !k8s/examples
+k8s

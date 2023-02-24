@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dj-ms-core
-  namespace: dj-ms-core
   labels:
     app.kubernetes.io/name: dj-ms-core
     app.kubernetes.io/component: web

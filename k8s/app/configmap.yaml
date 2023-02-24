@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: dj-ms-core-config
-  namespace: dj-ms-core
 data:
   DJANGO_TIME_ZONE: 'Asia/Tashkent'
   DJANGO_LANGUAGE_CODE: 'en'

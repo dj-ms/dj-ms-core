@@ -18,7 +18,7 @@ cp -r k8s/examples k8s/production
 Create a namespace  
   
 ```shell
-kubectl create namespace <namespace>
+kubectl create namespace dj-ms-core
 ```
   
 ### PostgreSQL
@@ -54,19 +54,19 @@ kubectl exec -it <pod-name> -n postgres -- psql -U postgres
 Create a database:  
   
 ```sql
-CREATE DATABASE <database-name>;
+CREATE DATABASE dj_ms_core
 ```
   
 Create a user:  
   
 ```sql
-CREATE USER <user-name> WITH ENCRYPTED PASSWORD '<password>';
+CREATE USER dj_ms_core WITH ENCRYPTED PASSWORD 'dj_ms_core';
 ```
   
 Grant permissions:  
   
 ```sql
-GRANT ALL PRIVILEGES ON DATABASE <database-name> TO <user-name>;
+GRANT ALL PRIVILEGES ON DATABASE dj_ms_core TO dj_ms_core;
 ```
   
   
@@ -98,14 +98,14 @@ rabbitmq-7c78d7f66b-n84jr  1/1     Running   0          2m
 Create a user:  
   
 ```shell
-kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl add_user <user-name> <password>
+kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl add_user dj_ms_core dj_ms_core
 ```
   
 Grant permissions:  
   
 ```shell
-kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl set_user_tags <user-name> administrator
-kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl set_permissions -p / <user-name> ".*" ".*" ".*"
+kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl set_user_tags dj_ms_core administrator
+kubectl exec -it <pod-name> -n rabbitmq -- rabbitmqctl set_permissions -p / dj_ms_core ".*" ".*" ".*"
 ```
 
   
@@ -119,16 +119,16 @@ After that, you should create an `.env` file in the `k8s/production/app` directo
 It should contain the following variables:  
   - `DJANGO_DEBUG` - normally `False` for production
   - `DJANGO_SECRET_KEY` - some random string. You can generate one with `openssl rand -base64 32`
-  - `DATABASE_URL` - default value is `postgres://postgres:postgres@postgres:5432/postgres`
+  - `DATABASE_URL` - Postgres connection string, e.g. `postgres://dj_ms_core:dj_ms_core@postgres:5432/dj_ms_core`
   - `DJANGO_ALLOWED_HOSTS` - your domain name. For example, `app.dj-ms.dev`
   - `DJANGO_CSRF_TRUSTED_ORIGINS` - usually the same as `DJANGO_ALLOWED_HOSTS` but with `https://` prefix. For example, `https://app.dj-ms.dev`
-  - `BROKER_URL` - default value is `amqp://guest:guest@rabbitmq:5672`
+  - `BROKER_URL` - RabbitMQ connection string, e.g. `amqp://dj_ms_core:dj_ms_core@rabbitmq:5672`
   
 Then you can create a secret and deploy the application:  
   
 ```shell
-kubectl create secret generic <my-app>-secret --from-env-file=k8s/production/app/.env -n <namespace>
-kubectl apply -f k8s/production/app -n <namespace>
+kubectl create secret generic dj-ms-core-secret --from-env-file=k8s/production/app/.env -n dj-ms-core
+kubectl apply -f k8s/production/app -n dj-ms-core
 ```
 
   

@@ -119,10 +119,10 @@ After that, you should create an `.env` file in the `k8s/production/app` directo
 It should contain the following variables:  
   - `DJANGO_DEBUG` - normally `False` for production
   - `DJANGO_SECRET_KEY` - some random string. You can generate one with `openssl rand -base64 32`
-  - `DATABASE_URL` - Postgres connection string, e.g. `postgres://dj_ms_core:dj_ms_core@postgres:5432/dj_ms_core`
+  - `DATABASE_URL` - Postgres connection string, e.g. `postgres://dj_ms_core:dj_ms_core@postgres.postgres.svc.cluster.local:5432/dj_ms_core`
   - `DJANGO_ALLOWED_HOSTS` - your domain name. For example, `app.dj-ms.dev`
   - `DJANGO_CSRF_TRUSTED_ORIGINS` - usually the same as `DJANGO_ALLOWED_HOSTS` but with `https://` prefix. For example, `https://app.dj-ms.dev`
-  - `BROKER_URL` - RabbitMQ connection string, e.g. `amqp://dj_ms_core:dj_ms_core@rabbitmq:5672`
+  - `BROKER_URL` - RabbitMQ connection string, e.g. `amqp://dj_ms_core:dj_ms_core@rabbitmq.rabbitmq.svc.cluster.local:5672`
   
 Then you can create a secret and deploy the application:  
   

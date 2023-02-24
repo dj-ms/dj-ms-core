@@ -40,47 +40,47 @@ But all of them will be under one domain and will have unified authentication.
 ---
 ## What's inside
 - [x] Unified authentication in all microservices
-- [x] Docker compose both for local development and production
-- [x] Celery, Celery Beat, RabbitMQ, Postgres and Nginx included in docker compose
-- [x] Kubernetes deployment
-- [x] Expiring token authentication
+- [x] Production deployment with Docker Compose or Kubernetes
+- [x] Celery, Celery Beat, RabbitMQ, Postgres and Nginx included in Docker Compose
+- [x] Expiring Bearer Token authentication
 - [x] Custom user model
 - [x] Custom db router for auth models
-- [x] Static and media files served by Nginx
 - [x] Object changes logging to one DB with [django-auditlog](https://github.com/jazzband/django-auditlog)
+- [x] Static and media files served by Nginx
 - [ ] Message brokers integration (there is RabbitMQ in docker compose, but at this time it's only used by Celery)
-- [ ] Automated CI/CD
+- [ ] Automated CI/CD either with GitHub Actions, GitLab CI or Bitbucket Pipelines
 - [ ] Active directory authentication
 - [ ] Automatic discovery of microservices
 
 
 ---
 ## Requirements
-
-- Docker and compose - [Download](https://docs.docker.com/get-docker/)
+  
+- Docker and Docker Compose - [Download](https://docs.docker.com/get-docker/)  
 > Of course, you can just run project without docker right on your machine. But docker is recommended way.
-
-<br>
-
-- Python 3.10 - [Download](https://www.python.org/downloads/)
+  
+- Python 3.10 - [Download](https://www.python.org/downloads/)  
 > You will need Python only if you want to run this project locally without docker.
 
 
 ---
-## Installation
-
-### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)
-
-### [Deploy to server using docker compose](docs/deploy_to_server_using_docker_compose.md)
-
-### [Deploy to production using Kubernetes](docs/deploy_in_production_using_k8s.md)
-
-
+## Installation  
+  
+### [Run locally using docker compose](docs/run_locally_using_docker_compose.md)  
+  
+### [Deploy to server using docker compose](docs/deploy_to_server_using_docker_compose.md)  
+  
+### [Deploy to production using Kubernetes](docs/deploy_in_production_using_k8s.md)  
+  
+  
 ---
-## Examples
-You can find example microservice apps under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.
+## Examples  
 
-Also, there is special example repo: [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app).
+You can find example microservice apps under [forks](https://github.com/dj-ms/dj-ms-core/network/members) section.  
+  
+Also, there is special example repos:  
+- [dj-ms-example-app](https://github.com/dj-ms/dj-ms-example-app)  
+- [dj-ms-telegram-bot](https://github.com/dj-ms/dj-ms-telegram-bot)  
 
 
 ---

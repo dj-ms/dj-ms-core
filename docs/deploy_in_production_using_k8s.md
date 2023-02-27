@@ -215,3 +215,18 @@ kubectl apply -f k8s/app -n dj-ms-core
 ```
   
   
+---
+## Access your application
+  
+After successful deployment, you should be able to access your application at `https://app.example.com/admin`.  
+But if it's first time you deploy your application, you should create a superuser.
+  
+```shell
+kubectl get pods -n dj-ms-core
+```
+  
+```shell
+kubectl exec -it <pod-name> -n dj-ms-core -- python manage.py createsuperuser
+```
+  
+Then you can access your application at `https://app.example.com/admin` and log in with the credentials you have just created.

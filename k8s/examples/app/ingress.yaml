@@ -18,4 +18,10 @@ spec:
                 name: dj-ms-core
                 port:
                   number: 8000
+          - path: /api/
+            backend:
+              service:
+                name: dj-ms-core
+                port:
+                  number: 8000
             pathType: ImplementationSpecific

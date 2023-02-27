@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/component: web
   annotations:
     kubernetes.io/ingress.class: nginx
-#    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   rules:
     - host: core.k8s.dj-ms.dev
@@ -18,9 +17,5 @@ spec:
               service:
                 name: dj-ms-core
                 port:
-                  number: 80
+                  number: 8000
             pathType: ImplementationSpecific
-#  tls:
-#    - hosts:
-#        - core.k8s.dj-ms.dev
-#      secretName: letsencrypt-production

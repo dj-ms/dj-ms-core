@@ -28,9 +28,6 @@ spec:
           value: rabbitmq
         - name: RABBITMQ_DEFAULT_PASS
           value: rabbitmq
-        envFrom:
-        - secretRef:
-            name: dj-ms-core-secret
         image: rabbitmq
         imagePullPolicy: Always
         name: rabbitmq

@@ -14,7 +14,7 @@ django-cleanup
 git+https://github.com/HarleyK1ng/django-auditlog.git@master#egg=django-auditlog
 
 # Miscroservices
-dj-ms-auth-router==1.3.1
+dj-ms-auth-router==1.4.0
 
 # Databases
 psycopg2-binary
